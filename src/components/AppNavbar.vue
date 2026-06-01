@@ -38,7 +38,7 @@
                 <button class="w-full rounded-md px-3 py-2 text-left text-sm" :class="active ? 'bg-slate-100' : ''">Profile</button>
               </MenuItem>
               <MenuItem v-slot="{ active }">
-                <button class="w-full rounded-md px-3 py-2 text-left text-sm" :class="active ? 'bg-slate-100' : ''" @click="auth.logout()">Sign out</button>
+                <button class="w-full rounded-md px-3 py-2 text-left text-sm" :class="active ? 'bg-slate-100' : ''" @click="logout()">Sign out</button>
               </MenuItem>
             </MenuItems>
           </Transition>
@@ -56,6 +56,7 @@ import { Bars3Icon, QuestionMarkCircleIcon } from '@heroicons/vue/24/outline'
 import NotificationDropdown from '@/components/NotificationDropdown.vue'
 import ToastNotification from '@/components/notification/ToastNotification.vue'
 import { useAuthStore } from '@/stores/auth/authStore'
+import { useAuth } from '@/composables/useAuth'
 import { useNotificationStore } from '@/stores/shared/notificationStore'
 
 defineEmits(['open-sidebar'])
@@ -71,6 +72,7 @@ defineProps({
 })
 
 const auth = useAuthStore()
+const { logout } = useAuth()
 const notifications = useNotificationStore()
 const initials = computed(() => auth.user?.name?.split(' ').map((part) => part[0]).join('').slice(0, 2) || 'LS')
 </script>

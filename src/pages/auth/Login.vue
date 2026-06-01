@@ -1,8 +1,8 @@
 <template>
-  <section class="w-full max-w-md rounded-lg bg-white p-8 shadow-soft">
-    <div class="mb-8">
-      <h1 class="text-2xl font-semibold text-slate-950">Login</h1>
-      <p class="mt-2 text-sm text-slate-500">Sign in to continue learning.</p>
+  <section class="w-full max-w-md rounded-lg bg-white p-6 shadow-soft sm:p-8">
+    <div class="mb-6">
+      <h1 class="text-2xl font-semibold text-slate-950">Sign in</h1>
+      <p class="mt-2 text-sm text-slate-500">Use your LMS credentials to continue learning.</p>
     </div>
 
     <div
@@ -43,10 +43,10 @@
 
       <button
         type="submit"
-        class="w-full rounded-md bg-brand-600 px-4 py-2 font-medium text-white hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-70"
+        class="focus-ring w-full rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-70"
         :disabled="loading"
       >
-        {{ loading ? 'Signing in...' : 'Login' }}
+        {{ loading ? 'Signing in...' : 'Sign in with API' }}
       </button>
     </form>
   </section>
