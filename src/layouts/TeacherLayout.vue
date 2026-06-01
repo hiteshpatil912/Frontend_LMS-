@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { AcademicCapIcon, BanknotesIcon, ChatBubbleLeftRightIcon, ClipboardDocumentCheckIcon, DocumentTextIcon, HomeIcon, MegaphoneIcon, QuestionMarkCircleIcon, UserGroupIcon } from '@heroicons/vue/24/outline'
+import { AcademicCapIcon, BanknotesIcon, ChartBarIcon, ChatBubbleLeftRightIcon, ClipboardDocumentCheckIcon, DocumentTextIcon, HomeIcon, MegaphoneIcon, QuestionMarkCircleIcon, UserGroupIcon } from '@heroicons/vue/24/outline'
 import RoleLayout from '@/layouts/RoleLayout.vue'
 
 const navigation = [
@@ -17,6 +17,7 @@ const navigation = [
   { name: 'Chat', to: '/teacher/chat', icon: ChatBubbleLeftRightIcon },
   { name: 'Discussions', to: '/teacher/discussions', icon: UserGroupIcon },
   { name: 'Quizzes', to: '/teacher/quizzes', icon: QuestionMarkCircleIcon },
+  { name: 'Analytics', to: '/teacher/analytics', icon: ChartBarIcon },
   { name: 'Reviews', to: '/teacher/reviews', icon: ChatBubbleLeftRightIcon },
   { name: 'Resources', to: '/teacher/resources', icon: DocumentTextIcon },
   { name: 'Earnings', to: '/teacher/earnings', icon: BanknotesIcon }

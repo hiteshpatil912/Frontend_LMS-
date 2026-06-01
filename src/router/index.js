@@ -3,6 +3,8 @@ import { authRoutes } from '@/router/routes/authRoutes'
 import { learningRoutes } from '@/router/routes/learningRoutes'
 import { publicRoutes } from '@/router/routes/publicRoutes'
 import { studentRoutes } from '@/router/routes/studentRoutes'
+import { teacherRoutes } from '@/router/routes/teacherRoutes'
+import { adminRoutes } from '@/router/routes/adminRoutes'
 import { errorRoutes } from '@/router/routes/errorRoutes'
 import { useAuthStore } from '@/stores/auth/authStore'
 
@@ -10,6 +12,8 @@ const routes = [
   ...publicRoutes,
   ...authRoutes,
   ...studentRoutes,
+  ...teacherRoutes,
+  ...adminRoutes,
   ...learningRoutes,
   ...errorRoutes,
   {

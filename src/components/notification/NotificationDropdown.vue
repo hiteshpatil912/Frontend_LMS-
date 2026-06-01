@@ -8,7 +8,7 @@
       <MenuItems class="absolute right-0 z-30 mt-3 w-96 origin-top-right rounded-lg border border-slate-200 bg-white p-2 shadow-soft focus:outline-none">
         <div class="flex items-center justify-between px-2 py-2">
           <p class="text-sm font-semibold text-slate-950">Notifications</p>
-          <button class="text-xs font-semibold text-brand-700" type="button" @click="store.markAllAsRead()">Mark all read</button>
+          <span class="text-xs font-semibold text-brand-700">{{ store.unreadCount }} unread</span>
         </div>
         <div v-if="store.loading" class="space-y-2 p-2">
           <div v-for="item in 3" :key="item" class="h-16 animate-pulse rounded-lg bg-slate-100"></div>
@@ -38,8 +38,8 @@ import { onMounted } from 'vue'
 import { Menu, MenuButton, MenuItem, MenuItems, TransitionRoot as Transition } from '@headlessui/vue'
 import { BellIcon } from '@heroicons/vue/24/outline'
 import NotificationBadge from '@/components/notification/NotificationBadge.vue'
-import { useNotificationStore } from '@/stores/shared/notificationStore'
+import { useLmsNotificationStore } from '@/stores/lms/notificationStore'
 
-const store = useNotificationStore()
+const store = useLmsNotificationStore()
 onMounted(() => store.fetchNotifications())
 </script>

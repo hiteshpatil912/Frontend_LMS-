@@ -1,10 +1,17 @@
 <template>
   <section class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
     <div
-      v-if="details.error || progress.error"
+      v-if="details.error || progress.error || wishlist.error"
       class="mb-6 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700"
     >
-      {{ details.error?.message || progress.error?.message }}
+      {{ details.error?.message || progress.error?.message || wishlist.error?.message }}
+    </div>
+
+    <div
+      v-if="wishlist.message"
+      class="mb-6 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-700"
+    >
+      {{ wishlist.message }}
     </div>
 
     <div v-if="details.loading" class="grid gap-8 lg:grid-cols-[1fr_360px]">
@@ -64,6 +71,15 @@
           >
             Start Learning
           </RouterLink>
+
+          <button
+            type="button"
+            class="mt-3 inline-flex w-full justify-center rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
+            :disabled="wishlist.adding"
+            @click="addToWishlist"
+          >
+            {{ wishlist.adding ? 'Adding...' : 'Add To Wishlist' }}
+          </button>
         </aside>
       </div>
 
@@ -104,10 +120,12 @@ import { useRoute } from 'vue-router'
 import ProgressBar from '@/components/learning/ProgressBar.vue'
 import { useLmsCourseDetailsStore } from '@/stores/lms/courseDetailsStore'
 import { useLmsProgressStore } from '@/stores/lms/progressStore'
+import { useLmsWishlistStore } from '@/stores/lms/wishlistStore'
 
 const route = useRoute()
 const details = useLmsCourseDetailsStore()
 const progress = useLmsProgressStore()
+const wishlist = useLmsWishlistStore()
 
 const courseId = computed(() => route.params.slug)
 const currentProgress = computed(() => progress.forCourse(courseId.value))
@@ -122,6 +140,14 @@ const loadCourse = async () => {
     await progress.fetchProgress(courseId.value)
   } catch {
     // Stores own rendered error state.
+  }
+}
+
+const addToWishlist = async () => {
+  try {
+    await wishlist.addToWishlist(courseId.value)
+  } catch {
+    // Store owns the rendered error state.
   }
 }
 
