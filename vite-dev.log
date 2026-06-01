@@ -1,0 +1,639 @@
+
+> enterprise-vue-lms@1.0.0 dev
+> vite --host 0.0.0.0 --port 5173
+
+
+  [32m[1mVITE[22m v6.4.2[39m  [2mready in [0m[1m841[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.1.6:[1m5173[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m2:16:51 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m2:17:19 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m2:17:29 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/AdminLayout.vue, /src/assets/main.css[22m
+[2m2:17:29 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/TeacherLayout.vue, /src/assets/main.css[22m
+[2m2:17:29 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/StudentLayout.vue, /src/assets/main.css[22m
+[2m2:17:38 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/plugins/axios.js[22m
+[2m2:17:38 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/main.js[22m
+[2m2:18:30 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/auth/LoginView.vue, /src/assets/main.css[22m
+[2m2:18:30 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/auth/LoginView.vue, /src/assets/main.css[22m
+[2m2:18:47 pm[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "@/views/auth/RegisterView.vue" from "src/router/index.js". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/DWEBPIXEL/practice/ABID SIR/LMS planning and documentation/vue lms/src/router/index.js[39m:16:29
+[33m  14 |      path: '/register',
+  15 |      name: 'register',
+  16 |      component: () => import('@/views/auth/RegisterView.vue'),
+     |                              ^
+  17 |      meta: { guest: true, breadcrumb: 'Register' }
+  18 |    },[39m
+[2m2:18:47 pm[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "@/views/auth/RegisterView.vue" from "src/router/index.js". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/DWEBPIXEL/practice/ABID SIR/LMS planning and documentation/vue lms/src/router/index.js[39m:16:29
+[33m  14 |      path: '/register',
+  15 |      name: 'register',
+  16 |      component: () => import('@/views/auth/RegisterView.vue'),
+     |                              ^
+  17 |      meta: { guest: true, breadcrumb: 'Register' }
+  18 |    },[39m
+[2m2:18:48 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "@/views/auth/RegisterView.vue" from "src/router/index.js". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/DWEBPIXEL/practice/ABID SIR/LMS planning and documentation/vue lms/src/router/index.js[39m:16:29
+[33m  14 |      path: '/register',
+  15 |      name: 'register',
+  16 |      component: () => import('@/views/auth/RegisterView.vue'),
+     |                              ^
+  17 |      meta: { guest: true, breadcrumb: 'Register' }
+  18 |    },[39m
+      at TransformPluginContext._formatLog (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42553:41)
+      at TransformPluginContext.error (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42550:16)
+      at normalizeUrl (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:40529:23)
+      at async file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:40648:37
+      at async Promise.all (index 4)
+      at async TransformPluginContext.transform (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:40575:7)
+      at async EnvironmentPluginContainer.transform (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42348:18)
+      at async loadAndTransform (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:35740:27)
+      at async viteTransformMiddleware (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:37264:24)
+[2m2:18:52 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "@/views/auth/RegisterView.vue" from "src/router/index.js". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/DWEBPIXEL/practice/ABID SIR/LMS planning and documentation/vue lms/src/router/index.js[39m:16:29
+[33m  14 |      path: '/register',
+  15 |      name: 'register',
+  16 |      component: () => import('@/views/auth/RegisterView.vue'),
+     |                              ^
+  17 |      meta: { guest: true, breadcrumb: 'Register' }
+  18 |    },[39m
+      at TransformPluginContext._formatLog (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42553:41)
+      at TransformPluginContext.error (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42550:16)
+      at normalizeUrl (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:40529:23)
+      at async file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:40648:37
+      at async Promise.all (index 4)
+      at async TransformPluginContext.transform (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:40575:7)
+      at async EnvironmentPluginContainer.transform (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42348:18)
+      at async loadAndTransform (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:35740:27)
+      at async viteTransformMiddleware (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:37264:24)
+[2m2:19:26 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/views/auth/RegisterView.vue[22m
+[2m2:19:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/main.js[22m
+[2m2:34:54 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/index.js[22m
+[2m2:35:29 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/middleware.js[22m
+[2m2:35:29 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m2:35:29 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/AdminLayout.vue, /src/assets/main.css[22m
+[2m2:37:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/admin/rolesStore.js[22m
+[2m2:38:36 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/admin/rolesStore.js[22m
+[2m2:39:13 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/components/admin/RoleTable.vue[22m
+[2m2:39:51 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/admin/rolesStore.js[22m
+[2m2:39:51 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m2:48:38 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m2:49:03 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/index.js[22m
+[2m2:49:03 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/admin/rolesStore.js[22m
+[2m2:49:30 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/middleware.js[22m
+[2m2:49:30 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m2:49:31 pm[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "@/views/admin/PermissionMatrixView.vue" from "src/router/index.js". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/DWEBPIXEL/practice/ABID SIR/LMS planning and documentation/vue lms/src/router/index.js[39m:48:81
+[33m  46 |        { path: 'roles/create', name: 'admin.roles.create', component: () => import('@/views/admin/CreateRoleView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Create Role' } },
+  47 |        { path: 'roles/:id/edit', name: 'admin.roles.edit', component: () => import('@/views/admin/EditRoleView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Edit Role' } },
+  48 |        { path: 'permissions', name: 'admin.permissions', component: () => import('@/views/admin/PermissionMatrixView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Permission Matrix' } },
+     |                                                                                  ^
+  49 |        { path: 'courses', name: 'admin.courses', component: () => import('@/views/admin/CoursesView.vue'), meta: { permission: 'manage_courses', breadcrumb: 'Courses' } },
+  50 |        { path: 'categories', name: 'admin.categories', component: () => import('@/views/admin/CategoriesView.vue'), meta: { permission: 'manage_courses', breadcrumb: 'Categories' } },[39m
+[2m2:49:31 pm[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "@/views/admin/PermissionMatrixView.vue" from "src/router/index.js". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/DWEBPIXEL/practice/ABID SIR/LMS planning and documentation/vue lms/src/router/index.js[39m:48:81
+[33m  46 |        { path: 'roles/create', name: 'admin.roles.create', component: () => import('@/views/admin/CreateRoleView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Create Role' } },
+  47 |        { path: 'roles/:id/edit', name: 'admin.roles.edit', component: () => import('@/views/admin/EditRoleView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Edit Role' } },
+  48 |        { path: 'permissions', name: 'admin.permissions', component: () => import('@/views/admin/PermissionMatrixView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Permission Matrix' } },
+     |                                                                                  ^
+  49 |        { path: 'courses', name: 'admin.courses', component: () => import('@/views/admin/CoursesView.vue'), meta: { permission: 'manage_courses', breadcrumb: 'Courses' } },
+  50 |        { path: 'categories', name: 'admin.categories', component: () => import('@/views/admin/CategoriesView.vue'), meta: { permission: 'manage_courses', breadcrumb: 'Categories' } },[39m
+[2m2:49:31 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "@/views/admin/PermissionMatrixView.vue" from "src/router/index.js". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/DWEBPIXEL/practice/ABID SIR/LMS planning and documentation/vue lms/src/router/index.js[39m:48:81
+[33m  46 |        { path: 'roles/create', name: 'admin.roles.create', component: () => import('@/views/admin/CreateRoleView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Create Role' } },
+  47 |        { path: 'roles/:id/edit', name: 'admin.roles.edit', component: () => import('@/views/admin/EditRoleView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Edit Role' } },
+  48 |        { path: 'permissions', name: 'admin.permissions', component: () => import('@/views/admin/PermissionMatrixView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Permission Matrix' } },
+     |                                                                                  ^
+  49 |        { path: 'courses', name: 'admin.courses', component: () => import('@/views/admin/CoursesView.vue'), meta: { permission: 'manage_courses', breadcrumb: 'Courses' } },
+  50 |        { path: 'categories', name: 'admin.categories', component: () => import('@/views/admin/CategoriesView.vue'), meta: { permission: 'manage_courses', breadcrumb: 'Categories' } },[39m
+      at TransformPluginContext._formatLog (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42553:41)
+      at TransformPluginContext.error (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42550:16)
+      at normalizeUrl (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:40529:23)
+      at async file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:40648:37
+      at async Promise.all (index 14)
+      at async TransformPluginContext.transform (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:40575:7)
+      at async EnvironmentPluginContainer.transform (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42348:18)
+      at async loadAndTransform (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:35740:27)
+      at async viteTransformMiddleware (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:37264:24)
+[2m2:50:11 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/AdminLayout.vue, /src/assets/main.css[22m
+[2m2:50:11 pm[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "@/views/admin/PermissionMatrixView.vue" from "src/router/index.js". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/DWEBPIXEL/practice/ABID SIR/LMS planning and documentation/vue lms/src/router/index.js[39m:48:81
+[33m  46 |        { path: 'roles/create', name: 'admin.roles.create', component: () => import('@/views/admin/CreateRoleView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Create Role' } },
+  47 |        { path: 'roles/:id/edit', name: 'admin.roles.edit', component: () => import('@/views/admin/EditRoleView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Edit Role' } },
+  48 |        { path: 'permissions', name: 'admin.permissions', component: () => import('@/views/admin/PermissionMatrixView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Permission Matrix' } },
+     |                                                                                  ^
+  49 |        { path: 'courses', name: 'admin.courses', component: () => import('@/views/admin/CoursesView.vue'), meta: { permission: 'manage_courses', breadcrumb: 'Courses' } },
+  50 |        { path: 'categories', name: 'admin.categories', component: () => import('@/views/admin/CategoriesView.vue'), meta: { permission: 'manage_courses', breadcrumb: 'Categories' } },[39m
+[2m2:50:11 pm[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "@/views/admin/PermissionMatrixView.vue" from "src/router/index.js". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/DWEBPIXEL/practice/ABID SIR/LMS planning and documentation/vue lms/src/router/index.js[39m:48:81
+[33m  46 |        { path: 'roles/create', name: 'admin.roles.create', component: () => import('@/views/admin/CreateRoleView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Create Role' } },
+  47 |        { path: 'roles/:id/edit', name: 'admin.roles.edit', component: () => import('@/views/admin/EditRoleView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Edit Role' } },
+  48 |        { path: 'permissions', name: 'admin.permissions', component: () => import('@/views/admin/PermissionMatrixView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Permission Matrix' } },
+     |                                                                                  ^
+  49 |        { path: 'courses', name: 'admin.courses', component: () => import('@/views/admin/CoursesView.vue'), meta: { permission: 'manage_courses', breadcrumb: 'Courses' } },
+  50 |        { path: 'categories', name: 'admin.categories', component: () => import('@/views/admin/CategoriesView.vue'), meta: { permission: 'manage_courses', breadcrumb: 'Categories' } },[39m
+[2m2:50:11 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/components/admin/PermissionMatrixTable.vue[22m
+[2m2:50:12 pm[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "@/views/admin/PermissionMatrixView.vue" from "src/router/index.js". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/DWEBPIXEL/practice/ABID SIR/LMS planning and documentation/vue lms/src/router/index.js[39m:48:81
+[33m  46 |        { path: 'roles/create', name: 'admin.roles.create', component: () => import('@/views/admin/CreateRoleView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Create Role' } },
+  47 |        { path: 'roles/:id/edit', name: 'admin.roles.edit', component: () => import('@/views/admin/EditRoleView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Edit Role' } },
+  48 |        { path: 'permissions', name: 'admin.permissions', component: () => import('@/views/admin/PermissionMatrixView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Permission Matrix' } },
+     |                                                                                  ^
+  49 |        { path: 'courses', name: 'admin.courses', component: () => import('@/views/admin/CoursesView.vue'), meta: { permission: 'manage_courses', breadcrumb: 'Courses' } },
+  50 |        { path: 'categories', name: 'admin.categories', component: () => import('@/views/admin/CategoriesView.vue'), meta: { permission: 'manage_courses', breadcrumb: 'Categories' } },[39m
+[2m2:50:12 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "@/views/admin/PermissionMatrixView.vue" from "src/router/index.js". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/DWEBPIXEL/practice/ABID SIR/LMS planning and documentation/vue lms/src/router/index.js[39m:48:81
+[33m  46 |        { path: 'roles/create', name: 'admin.roles.create', component: () => import('@/views/admin/CreateRoleView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Create Role' } },
+  47 |        { path: 'roles/:id/edit', name: 'admin.roles.edit', component: () => import('@/views/admin/EditRoleView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Edit Role' } },
+  48 |        { path: 'permissions', name: 'admin.permissions', component: () => import('@/views/admin/PermissionMatrixView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Permission Matrix' } },
+     |                                                                                  ^
+  49 |        { path: 'courses', name: 'admin.courses', component: () => import('@/views/admin/CoursesView.vue'), meta: { permission: 'manage_courses', breadcrumb: 'Courses' } },
+  50 |        { path: 'categories', name: 'admin.categories', component: () => import('@/views/admin/CategoriesView.vue'), meta: { permission: 'manage_courses', breadcrumb: 'Categories' } },[39m
+      at TransformPluginContext._formatLog (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42553:41)
+      at TransformPluginContext.error (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42550:16)
+      at normalizeUrl (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:40529:23)
+      at async file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:40648:37
+      at async Promise.all (index 14)
+      at async TransformPluginContext.transform (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:40575:7)
+      at async EnvironmentPluginContainer.transform (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42348:18)
+      at async loadAndTransform (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:35740:27)
+[2m2:50:12 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "@/views/admin/PermissionMatrixView.vue" from "src/router/index.js". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/DWEBPIXEL/practice/ABID SIR/LMS planning and documentation/vue lms/src/router/index.js[39m:48:81
+[33m  46 |        { path: 'roles/create', name: 'admin.roles.create', component: () => import('@/views/admin/CreateRoleView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Create Role' } },
+  47 |        { path: 'roles/:id/edit', name: 'admin.roles.edit', component: () => import('@/views/admin/EditRoleView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Edit Role' } },
+  48 |        { path: 'permissions', name: 'admin.permissions', component: () => import('@/views/admin/PermissionMatrixView.vue'), meta: { requiresAuth: true, role: 'admin', permission: 'manage_roles', breadcrumb: 'Permission Matrix' } },
+     |                                                                                  ^
+  49 |        { path: 'courses', name: 'admin.courses', component: () => import('@/views/admin/CoursesView.vue'), meta: { permission: 'manage_courses', breadcrumb: 'Courses' } },
+  50 |        { path: 'categories', name: 'admin.categories', component: () => import('@/views/admin/CategoriesView.vue'), meta: { permission: 'manage_courses', breadcrumb: 'Categories' } },[39m
+      at TransformPluginContext._formatLog (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42553:41)
+      at TransformPluginContext.error (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42550:16)
+      at normalizeUrl (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:40529:23)
+      at async file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:40648:37
+      at async Promise.all (index 14)
+      at async TransformPluginContext.transform (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:40575:7)
+      at async EnvironmentPluginContainer.transform (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42348:18)
+      at async loadAndTransform (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:35740:27)
+      at async viteTransformMiddleware (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:37264:24)
+[2m2:50:36 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/views/admin/PermissionMatrixView.vue[22m
+[2m2:50:37 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m2:52:40 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/AdminDashboard.vue, /src/views/admin/CoursesView.vue[22m
+[2m2:52:40 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/AdminDashboard.vue, /src/views/admin/CoursesView.vue[22m
+[2m2:52:40 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/teacher/CoursesView.vue[22m
+[2m2:52:40 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/teacher/CoursesView.vue[22m
+[2m2:55:07 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/middleware.js[22m
+[2m2:55:07 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m3:04:59 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/AdminDashboard.vue, /src/views/admin/CoursesView.vue[22m
+[2m3:04:59 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/teacher/CoursesView.vue[22m
+[2m3:05:55 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/components/course/CourseForm.vue[22m
+[2m3:06:10 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/components/course/CourseTable.vue[22m
+[2m3:06:10 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/components/course/CourseCard.vue[22m
+[2m3:06:10 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/views/shared/CourseManagementList.vue[22m
+[2m3:07:10 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m3:07:39 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/AdminDashboard.vue, /src/views/admin/CoursesView.vue[22m
+[2m3:07:39 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/teacher/CoursesView.vue[22m
+[2m3:07:39 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/components/course/CourseTable.vue[22m
+[2m3:12:05 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/index.js[22m
+[2m3:14:40 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m3:14:40 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/views/shared/CourseDetailsPage.vue[22m
+[2m3:17:45 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue[22m
+[2m3:17:45 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue[22m
+[2m3:17:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/ProgressView.vue[22m
+[2m3:17:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/ProgressView.vue[22m
+[2m3:18:31 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ new dependencies optimized: [33m@heroicons/vue/24/solid[32m[39m
+[2m3:18:31 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ optimized dependencies changed. reloading[39m
+[2m3:19:29 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m3:19:30 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/StudentLayout.vue, /src/assets/main.css[22m
+[2m3:23:53 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/teacher/quizStore.js[22m
+[2m3:23:53 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/teacher/quizStore.js[22m
+[2m3:23:54 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/index.js[22m
+[2m3:24:59 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/auth/AuthShell.vue, /src/assets/main.css[22m
+[2m3:25:08 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/auth/AuthShell.vue, /src/assets/main.css[22m
+[2m3:26:37 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m3:26:37 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/AdminLayout.vue, /src/assets/main.css[22m
+[2m3:26:38 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/StudentLayout.vue, /src/assets/main.css[22m
+[2m3:33:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/AnalyticsView.vue[22m
+[2m3:33:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/AnalyticsView.vue[22m
+[2m3:33:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/index.js[22m
+[2m3:35:17 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m3:35:17 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/AdminLayout.vue, /src/assets/main.css[22m
+[2m3:39:24 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/CategoriesView.vue[22m
+[2m3:40:00 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/admin/CategoriesView.vue, /src/assets/main.css[22m
+[2m3:42:51 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m3:43:07 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/student/MyCoursesView.vue, /src/assets/main.css[22m
+[2m3:43:23 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/components/course/CourseForm.vue[22m
+[2m3:47:18 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/index.js[22m
+[2m3:51:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m3:51:28 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/AdminLayout.vue, /src/assets/main.css[22m
+[2m3:51:38 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/TeacherLayout.vue, /src/assets/main.css[22m
+[2m3:51:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/StudentLayout.vue, /src/assets/main.css[22m
+[2m3:51:54 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/views/shared/ResourceUploadPage.vue[22m
+[2m4:58:32 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/index.js[22m
+[2m4:59:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/student/ContinueLearningCard.vue, /src/assets/main.css[22m
+[2m4:59:36 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/student/ContinueLearningCard.vue[22m
+[2m4:59:40 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/student/ContinueLearningView.vue, /src/assets/main.css[22m
+[2m4:59:59 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/student/ContinueLearningView.vue[22m
+[2m5:00:18 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m5:00:25 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/StudentLayout.vue, /src/assets/main.css[22m
+[2m5:00:44 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/student/CourseLearningView.vue, /src/assets/main.css[22m
+[2m5:04:00 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CertificatesView.vue[22m
+[2m5:04:31 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/student/CertificatesView.vue, /src/assets/main.css[22m
+[2m5:05:01 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/index.js[22m
+[2m5:07:14 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m5:07:23 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/AdminLayout.vue, /src/assets/main.css[22m
+[2m5:07:27 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/student/CertificatesView.vue, /src/assets/main.css[22m
+[2m5:09:50 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/index.js[22m
+[2m5:12:10 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m5:12:18 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/AdminLayout.vue, /src/assets/main.css[22m
+[2m5:12:25 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/TeacherLayout.vue, /src/assets/main.css[22m
+[2m5:12:32 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/student/EnrolledCourseCard.vue, /src/assets/main.css[22m
+[2m5:12:38 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/student/CourseLearningView.vue, /src/assets/main.css[22m
+[2m5:15:08 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/components/NotificationDropdown.vue[22m
+[2m5:15:08 pm[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to load url /src/stores/shared/notificationStore.js (resolved id: D:/DWEBPIXEL/practice/ABID SIR/LMS planning and documentation/vue lms/src/stores/shared/notificationStore.js) in D:/DWEBPIXEL/practice/ABID SIR/LMS planning and documentation/vue lms/src/assets/main.css. Does the file exist?
+[2m5:15:28 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/NotificationDropdown.vue, /src/assets/main.css[22m
+[2m5:15:49 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/index.js[22m
+[2m5:16:52 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/NotificationDropdown.vue, /src/assets/main.css[22m
+[2m5:16:57 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/NotificationDropdown.vue[22m
+[2m5:17:03 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/AppNavbar.vue, /src/assets/main.css[22m
+[2m5:18:05 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m5:18:12 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/AdminLayout.vue, /src/assets/main.css[22m
+[2m5:18:20 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/TeacherLayout.vue, /src/assets/main.css[22m
+[2m5:18:28 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/StudentLayout.vue, /src/assets/main.css[22m
+[2m5:19:33 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/shared/chatStore.js[22m
+[2m5:19:58 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/shared/chatStore.js[22m
+[2m5:20:28 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/index.js[22m
+[2m5:22:36 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m5:22:42 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/AdminLayout.vue, /src/assets/main.css[22m
+[2m5:22:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/TeacherLayout.vue, /src/assets/main.css[22m
+[2m5:22:56 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/StudentLayout.vue, /src/assets/main.css[22m
+[2m5:23:57 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/teacher/AssignmentsView.vue[22m
+[2m5:24:38 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/teacher/AssignmentsView.vue, /src/assets/main.css[22m
+[2m5:25:07 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/index.js[22m
+[2m5:28:13 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m5:28:19 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/AdminLayout.vue, /src/assets/main.css[22m
+[2m5:28:23 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/StudentLayout.vue, /src/assets/main.css[22m
+[2m5:30:58 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/PaymentsView.vue[22m
+[2m5:31:14 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/admin/PaymentsView.vue, /src/assets/main.css[22m
+[2m5:31:29 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/teacher/earningsStore.js[22m
+[2m5:31:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/teacher/earningsStore.js[22m
+[2m5:32:20 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/index.js[22m
+[2m5:33:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/admin/PaymentsView.vue, /src/assets/main.css[22m
+[2m5:33:57 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/admin/PaymentsView.vue[22m
+[2m5:35:13 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m5:36:11 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/AdminLayout.vue, /src/assets/main.css[22m
+[2m5:36:11 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/StudentLayout.vue, /src/assets/main.css[22m
+[2m5:52:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ new dependencies optimized: [33mvue-chartjs, chart.js[32m[39m
+[2m5:52:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ optimized dependencies changed. reloading[39m
+[2m12:30:20 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m12:30:34 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m12:33:53 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m12:34:48 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m12:41:22 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m12:41:45 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m12:42:14 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m12:42:15 pm[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to parse source for import analysis because the content contains invalid JS syntax. If you are using JSX, make sure to name the file with the .jsx or .tsx extension.
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/DWEBPIXEL/practice/ABID SIR/LMS planning and documentation/vue lms/src/stores/auth/authStore.js[39m:197:2
+[33m  195|  },
+  196|    }
+  197|  })
+     |   ^
+  198|  [39m
+[2m12:42:15 pm[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to parse source for import analysis because the content contains invalid JS syntax. If you are using JSX, make sure to name the file with the .jsx or .tsx extension.
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/DWEBPIXEL/practice/ABID SIR/LMS planning and documentation/vue lms/src/stores/auth/authStore.js[39m:197:2
+[33m  195|  },
+  196|    }
+  197|  })
+     |   ^
+  198|  [39m
+[2m12:42:16 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to parse source for import analysis because the content contains invalid JS syntax. If you are using JSX, make sure to name the file with the .jsx or .tsx extension.[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mD:/DWEBPIXEL/practice/ABID SIR/LMS planning and documentation/vue lms/src/stores/auth/authStore.js[39m:197:2
+[33m  195|  },
+  196|    }
+  197|  })
+     |   ^
+  198|  [39m
+      at TransformPluginContext._formatLog (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42553:41)
+      at TransformPluginContext.error (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42550:16)
+      at TransformPluginContext.transform (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:40480:14)
+      at async EnvironmentPluginContainer.transform (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42348:18)
+      at async loadAndTransform (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:35740:27)
+      at async viteTransformMiddleware (file:///D:/DWEBPIXEL/practice/ABID%20SIR/LMS%20planning%20and%20documentation/vue%20lms/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:37264:24)
+[2m12:42:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m12:43:37 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m12:43:55 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m12:45:42 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m12:45:54 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m12:46:22 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/services/api.js[22m
+[2m1:02:36 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m1:03:22 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m1:58:48 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m2:05:07 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/middleware.js[22m
+[2m2:05:31 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/middleware.js[22m
+[2m2:05:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/middleware.js[22m
+[2m2:07:36 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/middleware.js[22m
+[2m2:11:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/middleware.js[22m
+[2m2:39:15 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m4:51:16 pm[22m [31m[1m[vite][22m[39m [31mInternal server error: [vue/compiler-sfc] Identifier 'useAdminCoursesStore' has already been declared. (12:9)
+
+D:/DWEBPIXEL/practice/ABID SIR/LMS planning and documentation/vue lms/src/views/admin/AdminDashboard.vue
+37 |  import { useAdminCoursesStore } from '@/stores/admin/coursesStore'
+38 |  import { useAdminDashboardStore } from '@/stores/admin/dashboardStore'
+39 |  import { useAdminCoursesStore } from '@/stores/admin/coursesStore'
+   |           ^
+40 |  
+41 |  const store = useAdminDashboardStore()[39m
+  Plugin: [35mvite:vue[39m
+  File: [36mD:/DWEBPIXEL/practice/ABID SIR/LMS planning and documentation/vue lms/src/views/admin/AdminDashboard.vue[39m:12:9
+[33m  11 |        <TabList class="flex gap-2 border-b border-slate-200">
+  12 |          <Tab v-for="tab in tabs" :key="tab" v-slot="{ selected }" as="template">
+  13 |            <button class="focus-ring px-4 py-3 text-sm font-medium" :class="selected ? 'border-b-2 border-brand-600 text-brand-700' : 'text-slate-500'">{{ tab }}</button>
+     |  ^
+  14 |          </Tab>
+  15 |        </TabList>[39m
+      at constructor (D:\DWEBPIXEL\practice\ABID SIR\LMS planning and documentation\vue lms\node_modules\@babel\parser\lib\index.js:365:19)
+      at Parser.raise (D:\DWEBPIXEL\practice\ABID SIR\LMS planning and documentation\vue lms\node_modules\@babel\parser\lib\index.js:6616:19)
+      at ScopeHandler.checkRedeclarationInScope (D:\DWEBPIXEL\practice\ABID SIR\LMS planning and documentation\vue lms\node_modules\@babel\parser\lib\index.js:1619:19)
+      at ScopeHandler.declareName (D:\DWEBPIXEL\practice\ABID SIR\LMS planning and documentation\vue lms\node_modules\@babel\parser\lib\index.js:1585:12)
+      at Parser.declareNameFromIdentifier (D:\DWEBPIXEL\practice\ABID SIR\LMS planning and documentation\vue lms\node_modules\@babel\parser\lib\index.js:7584:16)
+      at Parser.checkIdentifier (D:\DWEBPIXEL\practice\ABID SIR\LMS planning and documentation\vue lms\node_modules\@babel\parser\lib\index.js:7580:12)
+      at Parser.checkLVal (D:\DWEBPIXEL\practice\ABID SIR\LMS planning and documentation\vue lms\node_modules\@babel\parser\lib\index.js:7517:12)
+      at Parser.finishImportSpecifier (D:\DWEBPIXEL\practice\ABID SIR\LMS planning and documentation\vue lms\node_modules\@babel\parser\lib\index.js:14283:10)
+      at Parser.parseImportSpecifier (D:\DWEBPIXEL\practice\ABID SIR\LMS planning and documentation\vue lms\node_modules\@babel\parser\lib\index.js:14436:17)
+      at Parser.parseNamedImportSpecifiers (D:\DWEBPIXEL\practice\ABID SIR\LMS planning and documentation\vue lms\node_modules\@babel\parser\lib\index.js:14415:36)
+[2m4:55:35 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/AdminDashboard.vue, /src/views/admin/CoursesView.vue, /src/views/admin/CoursesListView.vue, /src/views/admin/CreateQuizView.vue, /src/views/teacher/CoursesView.vue, /src/views/teacher/CoursesListView.vue, /src/views/teacher/CreateAssignmentView.vue[22m
+[2m4:57:55 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/AdminDashboard.vue, /src/views/admin/CoursesView.vue, /src/views/admin/CoursesListView.vue, /src/views/admin/CreateQuizView.vue, /src/views/teacher/CoursesView.vue, /src/views/teacher/CoursesListView.vue, /src/views/teacher/CreateAssignmentView.vue[22m
+[2m4:58:24 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/AdminDashboard.vue, /src/views/admin/CoursesView.vue, /src/views/admin/CoursesListView.vue, /src/views/admin/CreateQuizView.vue, /src/views/teacher/CoursesView.vue, /src/views/teacher/CoursesListView.vue, /src/views/teacher/CreateAssignmentView.vue[22m
+[2m5:00:55 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/AdminDashboard.vue, /src/views/admin/CoursesView.vue, /src/views/admin/CoursesListView.vue, /src/views/admin/CreateQuizView.vue, /src/views/teacher/CoursesView.vue, /src/views/teacher/CoursesListView.vue, /src/views/teacher/CreateAssignmentView.vue[22m
+[2m5:01:15 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/AdminDashboard.vue, /src/views/admin/CoursesView.vue, /src/views/admin/CoursesListView.vue, /src/views/admin/CreateQuizView.vue, /src/views/teacher/CoursesView.vue, /src/views/teacher/CoursesListView.vue, /src/views/teacher/CreateAssignmentView.vue[22m
+[2m5:03:38 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/AdminDashboard.vue, /src/views/admin/CoursesView.vue, /src/views/admin/CoursesListView.vue, /src/views/admin/CreateQuizView.vue, /src/views/teacher/CoursesView.vue, /src/views/teacher/CoursesListView.vue, /src/views/teacher/CreateAssignmentView.vue[22m
+[2m5:03:56 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/AdminDashboard.vue, /src/views/admin/CoursesView.vue, /src/views/admin/CoursesListView.vue, /src/views/admin/CreateQuizView.vue, /src/views/teacher/CoursesView.vue, /src/views/teacher/CoursesListView.vue, /src/views/teacher/CreateAssignmentView.vue[22m
+[2m5:07:06 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/admin/AdminDashboard.vue, /src/assets/main.css[22m
+[2m5:08:19 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/AdminDashboard.vue, /src/views/admin/CoursesView.vue, /src/views/admin/CoursesListView.vue, /src/views/admin/CreateQuizView.vue, /src/views/teacher/CoursesView.vue, /src/views/teacher/CoursesListView.vue, /src/views/teacher/CreateAssignmentView.vue[22m
+[2m5:13:22 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/middleware.js[22m
+[2m5:14:11 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/middleware.js[22m
+[2m5:15:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/middleware.js[22m
+[2m5:18:15 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/plugins/axios.js[22m
+[2m5:33:44 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/components/notification/NotificationDropdown.vue, /src/components/AppNavbar.vue, /src/views/student/NotificationsView.vue, /src/views/shared/AnnouncementsPage.vue[22m
+[2m5:40:38 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m5:41:00 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m5:42:22 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m5:43:54 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m5:49:34 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m5:58:05 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/AdminDashboard.vue, /src/views/admin/CoursesView.vue, /src/views/admin/CoursesListView.vue, /src/views/admin/CreateQuizView.vue, /src/views/teacher/CoursesView.vue, /src/views/teacher/CoursesListView.vue, /src/views/teacher/CreateAssignmentView.vue[22m
+[2m5:58:05 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/teacher/CreateAssignmentView.vue[22m
+[2m5:58:06 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/AdminLayout.vue, /src/assets/main.css[22m
+[2m5:58:06 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/admin/CoursesListView.vue, /src/assets/main.css[22m
+[2m6:07:48 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/AdminLayout.vue, /src/assets/main.css[22m
+[2m6:10:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/services/courseService.js[22m
+[2m6:10:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/AdminDashboard.vue, /src/views/admin/CoursesView.vue, /src/views/admin/CoursesListView.vue, /src/views/admin/CreateQuizView.vue, /src/views/teacher/CoursesView.vue, /src/views/teacher/CoursesListView.vue, /src/views/teacher/CreateAssignmentView.vue[22m
+[2m6:10:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue[22m
+[2m6:10:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue[22m
+[2m6:10:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/AnalyticsView.vue, /src/views/admin/AnalyticsDashboardView.vue[22m
+[2m6:10:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/teacher/CreateAssignmentView.vue[22m
+[2m6:10:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/teacher/CreateAssignmentView.vue[22m
+[2m6:10:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/teacher/CoursesView.vue, /src/views/teacher/CoursesListView.vue, /src/views/teacher/CreateAssignmentView.vue[22m
+[2m6:10:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue[22m
+[2m6:10:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m6:10:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CourseLearningView.vue, /src/views/student/ContinueLearningView.vue[22m
+[2m6:10:42 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/AdminLayout.vue, /src/assets/main.css[22m
+[2m6:10:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/student/SubmitReviewView.vue, /src/assets/main.css[22m
+[2m6:10:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/student/WatchHistoryTable.vue, /src/assets/main.css[22m
+[2m6:10:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/TeacherLayout.vue, /src/assets/main.css[22m
+[2m6:10:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/StudentLayout.vue, /src/assets/main.css[22m
+[2m6:10:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/teacher/CoursesListView.vue, /src/assets/main.css[22m
+[2m6:10:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/student/SubmitReviewView.vue, /src/assets/main.css[22m
+[2m6:10:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/student/CourseLearningView.vue, /src/assets/main.css[22m
+[2m6:10:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/admin/CoursesListView.vue, /src/assets/main.css[22m
+[2m6:10:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/student/EnrolledCourseCard.vue, /src/assets/main.css[22m
+[2m6:10:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/student/EmptyContinueState.vue, /src/assets/main.css[22m
+[2m6:10:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/student/ContinueLearningCard.vue, /src/assets/main.css[22m
+[2m6:10:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/student/WatchHistoryTable.vue, /src/assets/main.css[22m
+[2m6:10:50 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/AdminLayout.vue, /src/assets/main.css[22m
+[2m6:25:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/AdminDashboard.vue, /src/views/admin/CoursesView.vue, /src/views/admin/CoursesListView.vue, /src/views/admin/CreateQuizView.vue, /src/views/teacher/CoursesView.vue, /src/views/teacher/CoursesListView.vue, /src/views/teacher/CreateAssignmentView.vue[22m
+[2m6:26:19 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/AdminDashboard.vue, /src/views/admin/CoursesView.vue, /src/views/admin/CoursesListView.vue, /src/views/admin/CreateQuizView.vue, /src/views/teacher/CoursesView.vue, /src/views/teacher/CoursesListView.vue, /src/views/teacher/CreateAssignmentView.vue[22m
+[2m6:50:53 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/components/notification/NotificationDropdown.vue, /src/components/AppNavbar.vue, /src/views/student/NotificationsView.vue, /src/views/shared/AnnouncementsPage.vue[22m
+[2m6:52:49 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/PermissionMatrixView.vue, /src/views/admin/RolesListView.vue, /src/views/admin/EditRoleView.vue, /src/views/admin/CreateRoleView.vue[22m
+[2m6:55:26 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/PermissionMatrixView.vue, /src/views/admin/RolesListView.vue, /src/views/admin/EditRoleView.vue, /src/views/admin/CreateRoleView.vue[22m
+[2m6:56:00 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/PermissionMatrixView.vue, /src/views/admin/RolesListView.vue, /src/views/admin/EditRoleView.vue, /src/views/admin/CreateRoleView.vue[22m
+[2m7:05:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/PermissionMatrixView.vue, /src/views/admin/RolesListView.vue, /src/views/admin/EditRoleView.vue, /src/views/admin/CreateRoleView.vue[22m
+[2m7:06:13 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/PermissionMatrixView.vue, /src/views/admin/RolesListView.vue, /src/views/admin/EditRoleView.vue, /src/views/admin/CreateRoleView.vue[22m
+[2m7:06:19 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/PermissionMatrixView.vue, /src/views/admin/RolesListView.vue, /src/views/admin/EditRoleView.vue, /src/views/admin/CreateRoleView.vue[22m
+[2m7:07:10 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/PermissionMatrixView.vue, /src/views/admin/RolesListView.vue, /src/views/admin/EditRoleView.vue, /src/views/admin/CreateRoleView.vue[22m
+[2m7:07:55 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/admin/PermissionMatrixView.vue, /src/views/admin/RolesListView.vue, /src/views/admin/EditRoleView.vue, /src/views/admin/CreateRoleView.vue[22m
+[2m12:16:35 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue[22m
+[2m12:16:35 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue[22m
+[2m12:16:35 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue[22m
+[2m12:16:36 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m12:16:36 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CourseLearningView.vue, /src/views/student/ContinueLearningView.vue[22m
+[2m12:16:36 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/student/WatchHistoryTable.vue, /src/assets/main.css[22m
+[2m12:16:36 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/student/EnrolledCourseCard.vue, /src/assets/main.css[22m
+[2m12:16:37 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/student/EmptyContinueState.vue, /src/assets/main.css[22m
+[2m12:16:37 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/student/ContinueLearningCard.vue, /src/assets/main.css[22m
+[2m12:16:37 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/student/SubmitReviewView.vue, /src/assets/main.css[22m
+[2m12:16:37 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/StudentLayout.vue, /src/assets/main.css[22m
+[2m12:16:37 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/student/CourseLearningView.vue, /src/assets/main.css[22m
+[2m12:23:30 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue[22m
+[2m12:23:30 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue[22m
+[2m12:23:30 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CourseLearningView.vue, /src/views/student/ContinueLearningView.vue[22m
+[2m12:23:30 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m12:23:30 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/student/SubmitReviewView.vue, /src/assets/main.css[22m
+[2m12:23:31 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/StudentLayout.vue, /src/assets/main.css[22m
+[2m12:23:31 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/student/CourseLearningView.vue, /src/assets/main.css[22m
+[2m12:23:31 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/student/WatchHistoryTable.vue, /src/assets/main.css[22m
+[2m12:23:31 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/student/EnrolledCourseCard.vue, /src/assets/main.css[22m
+[2m12:23:31 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/student/ContinueLearningCard.vue, /src/assets/main.css[22m
+[2m12:23:31 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/student/EmptyContinueState.vue, /src/assets/main.css[22m
+[2m12:27:12 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/student/ContinueLearningCard.vue, /src/assets/main.css[22m
+[2m12:27:38 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/student/ContinueLearningCard.vue, /src/assets/main.css[22m
+[2m12:29:08 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m12:29:28 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m12:29:51 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m12:30:22 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/StudentLayout.vue, /src/assets/main.css[22m
+[2m2:37:30 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m2:37:34 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m2:37:48 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m2:39:25 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m2:39:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m2:40:16 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m2:41:03 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m2:41:29 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m2:43:23 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/student/MyCoursesView.vue, /src/assets/main.css[22m
+[2m2:49:34 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m2:50:39 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m2:52:33 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m2:53:03 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m3:01:12 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m3:01:16 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m3:02:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m3:02:33 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m3:03:18 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m3:03:34 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m3:03:40 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m3:03:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CoursesView.vue, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue, /src/views/student/SubmitReviewView.vue, /src/views/admin/ReviewsManagementView.vue, /src/views/teacher/ReviewAnalyticsView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m3:08:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/student/MyCoursesView.vue, /src/assets/main.css[22m
+[2m3:12:28 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/admin/CategoriesView.vue, /src/assets/main.css, /src/views/student/MyCoursesView.vue, /src/views/admin/CategoriesListView.vue, /src/views/admin/EditCategoryView.vue[22m
+[2m3:23:37 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/admin/CategoriesView.vue, /src/assets/main.css, /src/views/student/MyCoursesView.vue, /src/views/admin/CategoriesListView.vue, /src/views/admin/EditCategoryView.vue[22m
+[2m3:25:15 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/admin/CategoriesView.vue, /src/assets/main.css, /src/views/student/MyCoursesView.vue, /src/views/admin/CategoriesListView.vue, /src/views/admin/EditCategoryView.vue[22m
+[2m3:25:19 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/admin/CategoriesView.vue, /src/assets/main.css, /src/views/student/MyCoursesView.vue, /src/views/admin/CategoriesListView.vue, /src/views/admin/EditCategoryView.vue[22m
+[2m4:06:02 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue[22m
+[2m4:06:10 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue[22m
+[2m4:09:58 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue[22m
+[2m4:24:16 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue[22m
+[2m4:24:32 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue[22m
+[2m4:24:35 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue[22m
+[2m4:24:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue[22m
+[2m4:24:58 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue[22m
+[2m4:25:23 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue[22m
+[2m4:26:04 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue[22m
+[2m4:26:25 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue[22m
+[2m4:31:07 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue[22m
+[2m4:31:24 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/ProgressView.vue, /src/views/student/MyCoursesView.vue, /src/views/student/CourseLearningView.vue[22m
+[2m4:37:24 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CourseLearningView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue[22m
+[2m4:37:30 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CourseLearningView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue[22m
+[2m4:42:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CourseLearningView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue[22m
+[2m4:50:24 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CourseLearningView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue[22m
+[2m4:51:06 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CourseLearningView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue[22m
+[2m4:51:14 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CourseLearningView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue[22m
+[2m4:52:04 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CourseLearningView.vue, /src/views/student/ContinueLearningView.vue, /src/views/student/WatchHistoryView.vue[22m
+[2m4:56:58 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CourseLearningView.vue, /src/views/student/ContinueLearningView.vue[22m
+[2m4:57:24 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CourseLearningView.vue, /src/views/student/ContinueLearningView.vue[22m
+[2m4:58:08 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CourseLearningView.vue, /src/views/student/ContinueLearningView.vue[22m
+[2m5:09:42 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CourseLearningView.vue, /src/views/student/ContinueLearningView.vue[22m
+[2m5:13:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CourseLearningView.vue, /src/views/student/ContinueLearningView.vue[22m
+[2m5:13:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CourseLearningView.vue, /src/views/student/ContinueLearningView.vue[22m
+[2m5:23:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/quiz/QuizCard.vue, /src/assets/main.css[22m
+[2m5:28:48 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/shared/QuizListPage.vue, /src/assets/main.css[22m
+[2m5:29:14 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/QuizListView.vue, /src/views/admin/QuizListView.vue, /src/views/admin/CreateQuizView.vue, /src/views/teacher/QuizListView.vue[22m
+[2m5:29:14 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/QuizListView.vue[22m
+[2m5:29:14 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/student/QuizListView.vue, /src/assets/main.css[22m
+[2m5:29:14 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/views/shared/QuizListPage.vue, /src/assets/main.css[22m
+[2m5:32:06 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/QuizListView.vue[22m
+[2m5:32:42 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/QuizListView.vue[22m
+[2m6:04:25 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/LearningResourcesView.vue, /src/views/admin/ResourcesListView.vue, /src/views/teacher/ResourcesListView.vue[22m
+[2m6:05:20 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/LearningResourcesView.vue, /src/views/admin/ResourcesListView.vue, /src/views/teacher/ResourcesListView.vue[22m
+[2m6:06:15 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/LearningResourcesView.vue, /src/views/admin/ResourcesListView.vue, /src/views/teacher/ResourcesListView.vue[22m
+[2m6:07:08 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/LearningResourcesView.vue, /src/views/admin/ResourcesListView.vue, /src/views/teacher/ResourcesListView.vue[22m
+[2m6:07:36 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/LearningResourcesView.vue, /src/views/admin/ResourcesListView.vue, /src/views/teacher/ResourcesListView.vue[22m
+[2m6:08:33 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/LearningResourcesView.vue, /src/views/admin/ResourcesListView.vue, /src/views/teacher/ResourcesListView.vue[22m
+[2m6:08:47 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/LearningResourcesView.vue, /src/views/admin/ResourcesListView.vue, /src/views/teacher/ResourcesListView.vue[22m
+[2m6:12:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/LearningResourcesView.vue[22m
+[2m6:14:55 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/LearningResourcesView.vue[22m
+[2m6:21:31 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/LearningResourcesView.vue, /src/views/admin/ResourcesListView.vue, /src/views/teacher/ResourcesListView.vue[22m
+[2m6:21:48 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/LearningResourcesView.vue, /src/views/admin/ResourcesListView.vue, /src/views/teacher/ResourcesListView.vue[22m
+[2m6:27:05 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/LearningResourcesView.vue, /src/views/admin/ResourcesListView.vue, /src/views/teacher/ResourcesListView.vue[22m
+[2m6:28:23 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/LearningResourcesView.vue, /src/views/admin/ResourcesListView.vue, /src/views/teacher/ResourcesListView.vue[22m
+[2m6:30:06 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/LearningResourcesView.vue, /src/views/admin/ResourcesListView.vue, /src/views/teacher/ResourcesListView.vue[22m
+[2m6:30:29 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/LearningResourcesView.vue, /src/views/admin/ResourcesListView.vue, /src/views/teacher/ResourcesListView.vue[22m
+[2m6:30:52 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/LearningResourcesView.vue, /src/views/admin/ResourcesListView.vue, /src/views/teacher/ResourcesListView.vue[22m
+[2m6:30:57 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/LearningResourcesView.vue, /src/views/admin/ResourcesListView.vue, /src/views/teacher/ResourcesListView.vue[22m
+[2m6:36:35 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/shared/ChatView.vue, /src/views/shared/DiscussionRoomView.vue[22m
+[2m6:39:57 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/shared/ChatView.vue, /src/views/shared/DiscussionRoomView.vue[22m
+[2m6:40:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/shared/ChatView.vue, /src/views/shared/DiscussionRoomView.vue[22m
+[2m6:41:12 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/shared/ChatView.vue, /src/views/shared/DiscussionRoomView.vue[22m
+[2m6:41:31 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/shared/ChatView.vue, /src/views/shared/DiscussionRoomView.vue[22m
+[2m6:45:31 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/shared/ChatView.vue, /src/views/shared/DiscussionRoomView.vue[22m
+[2m6:45:39 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/shared/ChatView.vue, /src/views/shared/DiscussionRoomView.vue[22m
+[2m6:46:26 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/shared/ChatView.vue, /src/views/shared/DiscussionRoomView.vue[22m
+[2m6:47:15 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/shared/ChatView.vue, /src/views/shared/DiscussionRoomView.vue[22m
+[2m6:48:15 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/shared/ChatView.vue, /src/views/shared/DiscussionRoomView.vue[22m
+[2m6:49:18 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/shared/ChatView.vue, /src/views/shared/DiscussionRoomView.vue[22m
+[2m6:52:26 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/shared/ChatView.vue, /src/views/shared/DiscussionRoomView.vue[22m
+[2m6:53:20 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/shared/ChatView.vue, /src/views/shared/DiscussionRoomView.vue[22m
+[2m6:55:07 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/shared/ChatView.vue, /src/views/shared/DiscussionRoomView.vue[22m
+[2m6:55:59 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/shared/ChatView.vue, /src/views/shared/DiscussionRoomView.vue[22m
+[2m12:03:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/StudentAssignmentsView.vue, /src/views/student/AssignmentSubmissionView.vue[22m
+[2m12:04:22 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/StudentAssignmentsView.vue, /src/views/student/AssignmentSubmissionView.vue[22m
+[2m12:05:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/StudentAssignmentsView.vue, /src/views/student/AssignmentSubmissionView.vue[22m
+[2m12:06:16 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/StudentAssignmentsView.vue, /src/views/student/AssignmentSubmissionView.vue[22m
+[2m12:06:41 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/StudentAssignmentsView.vue, /src/views/student/AssignmentSubmissionView.vue[22m
+[2m12:07:09 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/StudentAssignmentsView.vue, /src/views/student/AssignmentSubmissionView.vue[22m
+[2m12:09:08 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/StudentAssignmentsView.vue, /src/views/student/AssignmentSubmissionView.vue[22m
+[2m12:09:12 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/StudentAssignmentsView.vue, /src/views/student/AssignmentSubmissionView.vue[22m
+[2m12:14:19 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/PaymentsView.vue, /src/views/student/InvoicesView.vue[22m
+[2m12:16:26 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/PaymentsView.vue, /src/views/student/InvoicesView.vue[22m
+[2m12:16:42 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/PaymentsView.vue, /src/views/student/InvoicesView.vue[22m
+[2m12:18:24 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/PaymentsView.vue, /src/views/student/InvoicesView.vue[22m
+[2m12:20:19 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/PaymentsView.vue, /src/views/student/InvoicesView.vue[22m
+[2m12:20:49 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/PaymentsView.vue, /src/views/student/InvoicesView.vue[22m
+[2m12:21:34 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/PaymentsView.vue, /src/views/student/InvoicesView.vue[22m
+[2m12:23:12 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/PaymentsView.vue, /src/views/student/InvoicesView.vue[22m
+[2m12:23:48 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/PaymentsView.vue, /src/views/student/InvoicesView.vue[22m
+[2m12:26:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/PaymentsView.vue, /src/views/student/InvoicesView.vue[22m
+[2m12:26:53 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/PaymentsView.vue, /src/views/student/InvoicesView.vue[22m
+[2m12:26:56 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/PaymentsView.vue, /src/views/student/InvoicesView.vue[22m
+[2m12:27:06 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/PaymentsView.vue, /src/views/student/InvoicesView.vue[22m
+[2m12:32:13 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/SubscriptionView.vue[22m
+[2m12:32:54 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/SubscriptionView.vue[22m
+[2m12:33:03 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/SubscriptionView.vue[22m
+[2m12:33:23 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/SubscriptionView.vue[22m
+[2m12:34:11 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/SubscriptionView.vue[22m
+[2m12:34:28 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/SubscriptionView.vue[22m
+[2m12:34:36 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/SubscriptionView.vue[22m
+[2m12:35:13 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/SubscriptionView.vue[22m
+[2m12:35:30 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/SubscriptionView.vue[22m
+[2m12:35:33 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/SubscriptionView.vue[22m
+[2m12:36:32 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m12:37:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m12:47:20 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m1:00:29 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/CertificatesListView.vue, /src/views/student/CertificatePreviewView.vue[22m
+[2m1:39:30 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/PaymentsView.vue, /src/views/student/InvoicesView.vue[22m
+[2m1:39:39 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/PaymentsView.vue, /src/views/student/InvoicesView.vue[22m
+[2m1:39:46 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/PaymentsView.vue, /src/views/student/InvoicesView.vue[22m
+[2m2:05:10 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/assets/main.css, /src/views/student/SubscriptionView.vue[22m
+[2m2:19:36 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/StudentLayout.vue, /src/assets/main.css[22m
+[2m2:20:42 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m2:20:42 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m2:20:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/plugins/axios.js[22m
+[2m2:20:43 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/services/api.js[22m
+[2m2:21:25 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/services/courseService.js[22m
+[2m2:21:54 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/services/api.js[22m
+[2m2:22:52 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/index.js[22m
+[2m2:30:52 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m2:30:52 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/auth/authStore.js[22m
+[2m2:30:52 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/services/authService.js[22m
+[2m2:31:31 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/services/api.js[22m
+[2m2:31:31 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m2:31:32 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/main.js[22m
+[2m2:32:12 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/services/authService.js[22m
+[2m2:32:13 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/routes/errorRoutes.js[22m
+[2m2:32:13 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/routes/studentRoutes.js[22m
+[2m2:32:13 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/routes/learningRoutes.js[22m
+[2m2:32:13 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/index.js[22m
+[2m2:32:14 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/StudentLayout.vue, /src/assets/main.css[22m
+[2m2:32:14 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/lms/authStore.js[22m
+[2m2:37:26 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/lms/index.js[22m
+[2m2:38:09 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/student/ContinueLearningCard.vue, /src/assets/main.css[22m
+[2m2:38:10 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/course/CourseCard.vue, /src/assets/main.css[22m
+[2m2:45:00 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/services/progressService.js[22m
+[2m2:45:00 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/lms/progressStore.js[22m
+[2m2:45:00 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/lms/index.js[22m
+[2m2:46:45 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/routes/publicRoutes.js[22m
+[2m2:54:14 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/services/quizService.js[22m
+[2m2:54:15 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/lms/quizStore.js[22m
+[2m2:54:15 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/lms/quizStore.js[22m
+[2m2:55:15 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/components/quiz/QuizResultCard.vue[22m
+[2m2:55:15 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/components/quiz/QuizResultCard.vue[22m
+[2m2:55:31 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/routes/studentRoutes.js[22m
+[2m2:55:31 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/StudentLayout.vue, /src/assets/main.css[22m
+[2m3:01:36 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/services/certificateService.js[22m
+[2m3:01:36 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/lms/certificateStore.js[22m
+[2m3:01:36 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/stores/lms/certificateStore.js[22m
+[2m3:02:35 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/certificate/CertificateCard.vue, /src/assets/main.css[22m
+[2m3:02:35 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/certificate/CertificateCard.vue, /src/assets/main.css[22m
+[2m3:02:51 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/router/routes/studentRoutes.js[22m
+[2m3:02:51 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/layouts/StudentLayout.vue, /src/assets/main.css[22m
