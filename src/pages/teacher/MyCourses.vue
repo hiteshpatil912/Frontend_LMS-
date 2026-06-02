@@ -32,9 +32,13 @@
           <input
             v-model.trim="form.title"
             class="focus-ring mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"
+            :class="{ 'border-red-300': fieldError('title') }"
             type="text"
             required
           />
+          <span v-if="fieldError('title')" class="mt-1 block text-sm text-red-600">
+            {{ fieldError('title') }}
+          </span>
         </label>
 
         <label class="block">
@@ -47,12 +51,45 @@
       </div>
 
       <label class="mt-4 block">
+        <span class="text-sm font-medium text-slate-700">Description</span>
+        <textarea
+          v-model.trim="form.description"
+          class="focus-ring mt-1 min-h-28 w-full rounded-lg border border-slate-300 px-3 py-2"
+          :class="{ 'border-red-300': fieldError('description') }"
+          required
+        ></textarea>
+        <span v-if="fieldError('description')" class="mt-1 block text-sm text-red-600">
+          {{ fieldError('description') }}
+        </span>
+      </label>
+
+      <label class="mt-4 block">
+        <span class="text-sm font-medium text-slate-700">Price</span>
+        <input
+          v-model.number="form.price"
+          class="focus-ring mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"
+          :class="{ 'border-red-300': fieldError('price') }"
+          type="number"
+          min="0"
+          step="0.01"
+          required
+        />
+        <span v-if="fieldError('price')" class="mt-1 block text-sm text-red-600">
+          {{ fieldError('price') }}
+        </span>
+      </label>
+
+      <label class="mt-4 block">
         <span class="text-sm font-medium text-slate-700">Thumbnail URL</span>
         <input
           v-model.trim="form.thumbnail"
           class="focus-ring mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"
+          :class="{ 'border-red-300': fieldError('thumbnail') }"
           type="url"
         />
+        <span v-if="fieldError('thumbnail')" class="mt-1 block text-sm text-red-600">
+          {{ fieldError('thumbnail') }}
+        </span>
       </label>
 
       <div class="mt-5 flex flex-col gap-2 sm:flex-row sm:justify-end">
@@ -158,12 +195,16 @@ const editingId = ref(null)
 
 const form = reactive({
   title: '',
+  description: '',
+  price: 0,
   status: 'draft',
   thumbnail: ''
 })
 
 const resetForm = () => {
   form.title = ''
+  form.description = ''
+  form.price = 0
   form.status = 'draft'
   form.thumbnail = ''
   editingId.value = null
@@ -177,6 +218,8 @@ const openCreateForm = () => {
 const openEditForm = (course) => {
   editingId.value = course.id
   form.title = course.title
+  form.description = course.description || ''
+  form.price = Number(course.price || 0)
   form.status = course.status
   form.thumbnail = course.thumbnail || ''
   formOpen.value = true
@@ -188,11 +231,19 @@ const closeForm = () => {
 }
 
 const saveCourse = async () => {
+  const payload = {
+    title: form.title,
+    description: form.description,
+    price: form.price,
+    thumbnail: form.thumbnail,
+    status: form.status
+  }
+
   try {
     if (editingId.value) {
-      await courses.updateCourse(editingId.value, { ...form })
+      await courses.updateCourse(editingId.value, payload)
     } else {
-      await courses.createCourse({ ...form })
+      await courses.createCourse(payload)
     }
 
     closeForm()
@@ -215,6 +266,11 @@ const loadCourses = async () => {
   } catch {
     // Store owns the rendered error state.
   }
+}
+
+const fieldError = (field) => {
+  const value = courses.error?.validation?.[field]
+  return Array.isArray(value) ? value[0] : value
 }
 
 const initials = (title) =>

@@ -25,6 +25,8 @@ const normalizeError = (error, fallback = 'Unable to process teacher courses.') 
 const normalizeCourse = (course) => ({
   id: course.id,
   title: course.title || course.name || 'Untitled Course',
+  description: course.description || '',
+  price: Number(course.price || 0),
   thumbnail: course.thumbnail || course.thumbnail_url || course.image || course.cover_image || null,
   status: course.status || 'draft',
   lessonsCount: Number(course.lessons_count || course.total_lessons || course.lessonsCount || 0),
