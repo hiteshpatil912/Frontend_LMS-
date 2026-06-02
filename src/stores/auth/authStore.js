@@ -5,8 +5,12 @@ const TOKEN_KEY = 'token'
 const USER_KEY = 'user'
 
 const roleHome = {
+  admin: '/admin/dashboard',
+  teacher: '/teacher/dashboard',
   student: '/student/dashboard'
 }
+
+const normalizeRole = (role) => String(role || '').toLowerCase()
 
 const safelyParseJson = (value) => {
   try {
@@ -64,9 +68,9 @@ export const useAuthStore = defineStore('auth', {
 
   getters: {
     isAuthenticated: (state) => Boolean(state.token && state.user),
-    role: (state) => state.user?.role || null,
-    isStudent: (state) => state.user?.role === 'student',
-    redirectPath: (state) => roleHome[state.user?.role] || '/student/dashboard'
+    role: (state) => normalizeRole(state.user?.role) || null,
+    isStudent: (state) => normalizeRole(state.user?.role) === 'student',
+    redirectPath: (state) => roleHome[normalizeRole(state.user?.role)] || '/login'
   },
 
   actions: {

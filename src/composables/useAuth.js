@@ -6,9 +6,9 @@ export function useAuth() {
   const router = useRouter()
   const auth = useAuthStore()
 
-  const login = async (credentials, redirectTo = null) => {
+  const login = async (credentials) => {
     const user = await auth.login(credentials)
-    const destination = redirectTo || (user?.role === 'student' ? '/student/dashboard' : auth.redirectPath)
+    const destination = auth.redirectPath
 
     await router.push(destination)
 

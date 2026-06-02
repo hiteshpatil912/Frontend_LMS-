@@ -14,10 +14,10 @@
     </div>
 
     <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      <article v-for="course in courses" :key="course.slug" class="rounded-lg border border-slate-200 bg-white p-5">
+      <article v-for="course in courses" :key="course.id" class="rounded-lg border border-slate-200 bg-white p-5">
         <h2 class="font-semibold">{{ course.title }}</h2>
         <p class="mt-2 text-sm text-slate-500">{{ course.description }}</p>
-        <RouterLink :to="`/courses/${course.slug}`" class="mt-4 inline-block text-sm font-medium text-brand-700">
+        <RouterLink :to="`/courses/${course.id}`" class="mt-4 inline-block text-sm font-medium text-brand-700">
           View Details
         </RouterLink>
       </article>
@@ -27,8 +27,8 @@
 
 <script setup>
 const courses = [
-  { slug: 'vue-foundations', title: 'Vue Foundations', description: 'Starter catalog item.' },
-  { slug: 'laravel-api-lms', title: 'Laravel API LMS', description: 'Starter catalog item.' },
-  { slug: 'pinia-state-management', title: 'Pinia State Management', description: 'Starter catalog item.' }
+  { id: 1, title: 'Vue Foundations', description: 'Starter catalog item.' },
+  { id: 2, title: 'Laravel API LMS', description: 'Starter catalog item.' },
+  { id: 3, title: 'Pinia State Management', description: 'Starter catalog item.' }
 ]
 </script>

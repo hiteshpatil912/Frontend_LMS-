@@ -14,7 +14,7 @@ export const publicRoutes = [
         meta: { title: 'Courses' }
       },
       {
-        path: 'courses/:slug',
+        path: 'courses/:id',
         name: 'courses.show',
         component: () => import('@/pages/courses/CourseDetails.vue'),
         meta: { title: 'Course Details', requiresAuth: true, role: 'student' }

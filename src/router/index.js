@@ -51,7 +51,7 @@ router.beforeEach(async (to) => {
   }
 
   if (to.meta.guest && auth.isAuthenticated) {
-    return { name: 'student.dashboard' }
+    return auth.redirectPath
   }
 
   return true

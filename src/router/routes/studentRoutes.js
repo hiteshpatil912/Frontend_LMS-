@@ -33,6 +33,12 @@ export const studentRoutes = [
         meta: { title: 'Notifications', requiresAuth: true, role: 'student' }
       },
       {
+        path: 'profile',
+        name: 'student.profile',
+        component: () => import('@/pages/student/Profile.vue'),
+        meta: { title: 'Profile', requiresAuth: true, role: 'student' }
+      },
+      {
         path: 'quizzes',
         name: 'student.quizzes',
         component: () => import('@/pages/student/QuizList.vue'),

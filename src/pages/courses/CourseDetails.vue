@@ -127,7 +127,7 @@ const details = useLmsCourseDetailsStore()
 const progress = useLmsProgressStore()
 const wishlist = useLmsWishlistStore()
 
-const courseId = computed(() => route.params.slug)
+const courseId = computed(() => route.params.id)
 const currentProgress = computed(() => progress.forCourse(courseId.value))
 const firstLessonRoute = computed(() => {
   const lesson = details.sortedLessons[0]

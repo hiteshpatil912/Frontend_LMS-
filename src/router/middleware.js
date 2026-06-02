@@ -47,7 +47,7 @@ export function guestMiddleware(to, auth) {
     auth.isAuthenticated
   ) {
 
-    return roleHome[auth.role] || '/admin/dashboard'
+    return roleHome[auth.role] || '/login'
 
   }
 

@@ -36,6 +36,13 @@
       >
         Continue Learning
       </RouterLink>
+
+      <RouterLink
+        :to="detailsRoute"
+        class="mt-3 inline-flex w-full justify-center rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+      >
+        View Details
+      </RouterLink>
     </div>
   </article>
 </template>
@@ -56,8 +63,11 @@ const props = defineProps({
 
 const progress = computed(() => Math.min(100, Math.max(0, Number(props.course.progress || 0))))
 const courseSlug = computed(() => props.course.slug || props.course.id || 'course')
+const courseId = computed(() => props.course.id || props.course.slug || 'course')
 const lessonId = computed(() => props.course.nextLessonId || 'intro')
 const learningRoute = computed(() => `${props.routeBase}/${courseSlug.value}/lessons/${lessonId.value}`)
+const detailsRoute = computed(() => `/courses/${props.course.id}`)
+// const detailsRoute = computed(() => `/courses/${courseId.value}`)
 const initials = computed(() =>
   String(props.course.title || 'Course')
     .split(' ')
