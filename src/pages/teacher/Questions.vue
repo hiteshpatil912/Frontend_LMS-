@@ -66,7 +66,7 @@
           <span class="text-sm font-medium text-slate-700">Correct Answer</span>
           <select v-model="form.correct_answer" class="focus-ring mt-1 w-full rounded-lg border border-slate-300 px-3 py-2">
             <option value="">Select correct answer</option>
-            <option v-for="option in availableOptions" :key="option" :value="option">{{ option }}</option>
+            <option v-for="option in availableOptions" :key="option.value" :value="option.value">{{ option.label }}</option>
           </select>
           <p v-if="fieldError('correct_answer')" class="mt-1 text-sm text-rose-600">{{ fieldError('correct_answer') }}</p>
         </label>
@@ -117,7 +117,7 @@
                   </span>
                 </div>
               </td>
-              <td class="whitespace-nowrap px-5 py-4 text-sm font-medium text-slate-700">{{ question.correctAnswer }}</td>
+              <td class="whitespace-nowrap px-5 py-4 text-sm font-medium text-slate-700">{{ correctAnswerLabel(question) }}</td>
               <td class="whitespace-nowrap px-5 py-4 text-right">
                 <div class="flex justify-end gap-2">
                   <button
@@ -169,12 +169,30 @@ const form = reactive({
   correct_answer: ''
 })
 
+const answerKeyMap = {
+  option_a: 'option_1',
+  option_b: 'option_2',
+  option_c: 'option_3',
+  option_d: 'option_4'
+}
+
 const availableOptions = computed(() =>
-  [form.option_1, form.option_2, form.option_3, form.option_4].filter(Boolean)
+  [
+    { value: 'option_1', label: form.option_1 },
+    { value: 'option_2', label: form.option_2 },
+    { value: 'option_3', label: form.option_3 },
+    { value: 'option_4', label: form.option_4 }
+  ].filter((option) => option.label)
 )
 
 const fieldError = (field) => {
-  const value = questions.error?.validation?.[field]
+  const fieldMap = {
+    option_1: 'option_a',
+    option_2: 'option_b',
+    option_3: 'option_c',
+    option_4: 'option_d'
+  }
+  const value = questions.error?.validation?.[field] || questions.error?.validation?.[fieldMap[field]]
   return Array.isArray(value) ? value[0] : value
 }
 
@@ -200,7 +218,7 @@ const openEditForm = (question) => {
   form.option_2 = question.option2
   form.option_3 = question.option3
   form.option_4 = question.option4
-  form.correct_answer = question.correctAnswer
+  form.correct_answer = answerKeyMap[question.correctAnswer] || question.correctAnswer
   formOpen.value = true
 }
 
@@ -241,6 +259,21 @@ const loadQuestions = async () => {
 
 const questionOptions = (question) =>
   [question.option1, question.option2, question.option3, question.option4].filter(Boolean)
+
+const correctAnswerLabel = (question) => {
+  const optionValues = {
+    option_a: question.option1,
+    option_b: question.option2,
+    option_c: question.option3,
+    option_d: question.option4,
+    option_1: question.option1,
+    option_2: question.option2,
+    option_3: question.option3,
+    option_4: question.option4
+  }
+
+  return optionValues[question.correctAnswer] || question.correctAnswer
+}
 
 onMounted(loadQuestions)
 </script>

@@ -10,21 +10,21 @@
       <button
         type="button"
         class="focus-ring rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-white disabled:cursor-not-allowed disabled:opacity-60"
-        :disabled="analytics.loading || analytics.courseLoading"
+        :disabled="loading || courseLoading"
         @click="loadAnalytics"
       >
         Refresh
       </button>
     </div>
 
-    <div v-if="analytics.error || courses.error" class="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700">
-      {{ analytics.error?.message || courses.error?.message }}
+    <div v-if="error" class="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+      {{ error }}
     </div>
 
-    <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+    <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
       <article
-        v-if="analytics.loading"
-        v-for="item in 5"
+        v-if="loading"
+        v-for="item in 4"
         :key="item"
         class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm"
       >
@@ -41,13 +41,13 @@
     </div>
 
     <div class="grid gap-6 xl:grid-cols-[1fr_420px]">
-      <ChartContainer title="Learning analytics snapshot" :bars="analytics.chartBars" />
+      <ChartContainer title="Learning analytics snapshot" :bars="chartBars" />
 
       <section class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
         <h2 class="text-base font-semibold text-slate-950">Course Analytics</h2>
         <p class="mt-1 text-sm text-slate-500">Per-course student progress and engagement.</p>
 
-        <div v-if="courses.loading || analytics.courseLoading" class="mt-5 space-y-3">
+        <div v-if="courseLoading" class="mt-5 space-y-3">
           <div v-for="item in 4" :key="item" class="h-16 animate-pulse rounded-lg bg-slate-100"></div>
         </div>
 
@@ -59,26 +59,26 @@
           >
             <div class="flex items-start justify-between gap-4">
               <div>
-                <h3 class="text-sm font-semibold text-slate-950">{{ course.courseTitle }}</h3>
-                <p class="mt-1 text-xs text-slate-500">{{ course.studentsEnrolled }} students enrolled</p>
+                <h3 class="text-sm font-semibold text-slate-950">{{ course.courseName }}</h3>
+                <p class="mt-1 text-xs text-slate-500">{{ course.totalStudents }} students enrolled</p>
               </div>
               <span class="rounded-full bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-700">
-                {{ course.completionPercentage }}%
+                {{ course.totalLessons }} lessons
               </span>
             </div>
 
             <dl class="mt-4 grid gap-3 text-sm sm:grid-cols-3">
               <div>
-                <dt class="text-xs text-slate-500">Quiz Attempts</dt>
-                <dd class="mt-1 font-semibold text-slate-950">{{ course.quizAttempts }}</dd>
+                <dt class="text-xs text-slate-500">Total Students</dt>
+                <dd class="mt-1 font-semibold text-slate-950">{{ course.totalStudents }}</dd>
               </div>
               <div>
-                <dt class="text-xs text-slate-500">Average Rating</dt>
-                <dd class="mt-1 font-semibold text-slate-950">{{ course.averageRating }}</dd>
+                <dt class="text-xs text-slate-500">Total Lessons</dt>
+                <dd class="mt-1 font-semibold text-slate-950">{{ course.totalLessons }}</dd>
               </div>
               <div>
-                <dt class="text-xs text-slate-500">Completion</dt>
-                <dd class="mt-1 font-semibold text-slate-950">{{ course.completionPercentage }}%</dd>
+                <dt class="text-xs text-slate-500">Total Quizzes</dt>
+                <dd class="mt-1 font-semibold text-slate-950">{{ course.totalQuizzes }}</dd>
               </div>
             </dl>
           </article>
@@ -93,84 +93,143 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import {
   AcademicCapIcon,
   ChartBarIcon,
-  CheckBadgeIcon,
-  StarIcon,
+  ClipboardDocumentListIcon,
   UserGroupIcon
 } from '@heroicons/vue/24/outline'
 import ChartContainer from '@/components/ChartContainer.vue'
 import DashboardCard from '@/components/DashboardCard.vue'
-import { useTeacherPanelAnalyticsStore } from '@/stores/teacher/panelAnalyticsStore'
-import { useTeacherPanelCourseStore } from '@/stores/teacher/panelCourseStore'
+import { teacherAnalyticsService } from '@/services/teacherAnalyticsService'
+import { teacherCourseService } from '@/services/teacherCourseService'
 
-const analytics = useTeacherPanelAnalyticsStore()
-const courses = useTeacherPanelCourseStore()
+const overview = ref({
+  totalStudents: 0,
+  totalCourses: 0,
+  totalLessons: 0,
+  totalQuizzes: 0
+})
+const courseRows = ref([])
+const loading = ref(false)
+const courseLoading = ref(false)
+const error = ref('')
 
 const metrics = computed(() => [
   {
     label: 'Total Students',
-    value: analytics.analytics.totalStudents,
+    value: overview.value.totalStudents,
     trend: 'Across your courses',
     icon: UserGroupIcon
   },
   {
-    label: 'Total Enrollments',
-    value: analytics.analytics.totalEnrollments,
-    trend: 'All-time enrollments',
+    label: 'Total Courses',
+    value: overview.value.totalCourses,
+    trend: 'Published and draft courses',
     icon: AcademicCapIcon
   },
   {
-    label: 'Completed Courses',
-    value: analytics.analytics.completedCourses,
-    trend: 'Course completions',
-    icon: CheckBadgeIcon
+    label: 'Total Lessons',
+    value: overview.value.totalLessons,
+    trend: 'Course lesson library',
+    icon: ClipboardDocumentListIcon
   },
   {
-    label: 'Avg Quiz Score',
-    value: `${analytics.analytics.averageQuizScore}%`,
-    trend: 'Learner performance',
+    label: 'Total Quizzes',
+    value: overview.value.totalQuizzes,
+    trend: 'Assessment inventory',
     icon: ChartBarIcon
-  },
-  {
-    label: 'Avg Rating',
-    value: analytics.analytics.averageCourseRating,
-    trend: 'Course feedback',
-    icon: StarIcon
   }
 ])
 
-const courseRows = computed(() =>
-  courses.courses.map((course) => {
-    const found = analytics.courseAnalytics.find((item) => String(item.courseId) === String(course.id))
+const chartBars = computed(() => [
+  { label: 'Students', value: overview.value.totalStudents },
+  { label: 'Courses', value: overview.value.totalCourses },
+  { label: 'Lessons', value: overview.value.totalLessons },
+  { label: 'Quizzes', value: overview.value.totalQuizzes }
+])
 
-    return found || {
-      courseId: course.id,
-      courseTitle: course.title,
-      studentsEnrolled: 0,
-      completionPercentage: 0,
-      quizAttempts: 0,
-      averageRating: 0
+const unwrap = (response) => response?.data?.data || response?.data || response || {}
+
+const listFrom = (payload, key) => {
+  if (Array.isArray(payload)) return payload
+  if (Array.isArray(payload?.[key])) return payload[key]
+  if (Array.isArray(payload?.data)) return payload.data
+  return []
+}
+
+const numberFrom = (...values) => {
+  const value = values.find((item) => item !== undefined && item !== null)
+  return Number(value || 0)
+}
+
+const normalizeOverview = (payload) => ({
+  totalStudents: numberFrom(payload.total_students, payload.totalStudents, payload.students_count),
+  totalCourses: numberFrom(payload.total_courses, payload.totalCourses, payload.courses_count),
+  totalLessons: numberFrom(payload.total_lessons, payload.totalLessons, payload.lessons_count),
+  totalQuizzes: numberFrom(payload.total_quizzes, payload.totalQuizzes, payload.quizzes_count)
+})
+
+const normalizeCourse = (course) => ({
+  id: course.id || course.course_id,
+  title: course.title || course.course_title || course.course_name || course.name || 'Untitled Course'
+})
+
+const normalizeCourseAnalytics = (payload, course) => ({
+  courseId: payload.course_id || payload.id || course.id,
+  courseName: payload.course_name || payload.course_title || payload.title || course.title,
+  totalStudents: numberFrom(payload.total_students, payload.totalStudents, payload.students_count),
+  totalLessons: numberFrom(payload.total_lessons, payload.totalLessons, payload.lessons_count),
+  totalQuizzes: numberFrom(payload.total_quizzes, payload.totalQuizzes, payload.quizzes_count)
+})
+
+const loadCourseAnalytics = async (overviewPayload) => {
+  courseLoading.value = true
+
+  try {
+    const overviewCourses = listFrom(overviewPayload, 'courses').map(normalizeCourse)
+    let courses = overviewCourses
+
+    if (!courses.length) {
+      const response = await teacherCourseService.getCourses()
+      courses = listFrom(unwrap(response), 'courses').map(normalizeCourse)
     }
-  })
-)
+
+    const rows = await Promise.all(
+      courses
+        .filter((course) => course.id)
+        .map(async (course) => {
+          const response = await teacherAnalyticsService.getCourseAnalytics(course.id)
+          const payload = unwrap(response)
+          return normalizeCourseAnalytics(payload.analytics || payload.course_analytics || payload, course)
+        })
+    )
+
+    courseRows.value = rows
+  } catch (requestError) {
+    error.value = requestError.response?.data?.message || 'Unable to load course analytics.'
+    courseRows.value = []
+  } finally {
+    courseLoading.value = false
+  }
+}
 
 const loadAnalytics = async () => {
-  try {
-    await Promise.all([
-      analytics.fetchDashboardAnalytics(),
-      courses.fetchCourses()
-    ])
+  loading.value = true
+  error.value = ''
 
-    await Promise.all(
-      courses.courses.map((course) =>
-        analytics.fetchCourseAnalytics(course.id).catch(() => null)
-      )
-    )
-  } catch {
-    // Stores own rendered error states.
+  try {
+    const response = await teacherAnalyticsService.getDashboardAnalytics()
+    const payload = unwrap(response)
+    overview.value = normalizeOverview(payload.analytics || payload)
+    await loadCourseAnalytics(payload.analytics || payload)
+  } catch (requestError) {
+    error.value = requestError.response?.data?.message || 'Unable to load analytics.'
+    overview.value = normalizeOverview({})
+    courseRows.value = []
+  } finally {
+    loading.value = false
   }
 }
 

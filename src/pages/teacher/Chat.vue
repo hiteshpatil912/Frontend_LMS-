@@ -6,154 +6,136 @@
       <p class="mt-1 text-sm text-slate-500">Review learner conversations and respond to course questions.</p>
     </div>
 
+    <div v-if="chat.error" class="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+      {{ chat.error.message }}
+    </div>
+
     <div class="grid min-h-[620px] overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm lg:grid-cols-[340px_1fr]">
       <aside class="border-b border-slate-200 lg:border-b-0 lg:border-r">
         <div class="border-b border-slate-100 p-4">
           <h2 class="text-sm font-semibold text-slate-950">Conversations</h2>
-          <p class="mt-1 text-xs text-slate-500">{{ conversations.length }} active threads</p>
+          <p class="mt-1 text-xs text-slate-500">{{ chat.chats.length }} conversations</p>
         </div>
 
-        <div v-if="conversations.length" class="divide-y divide-slate-100">
+        <div v-if="chat.loading" class="space-y-3 p-4">
+          <div v-for="item in 5" :key="item" class="h-16 animate-pulse rounded-lg bg-slate-100"></div>
+        </div>
+
+        <div v-else-if="chat.chats.length" class="max-h-[560px] divide-y divide-slate-100 overflow-y-auto">
           <button
-            v-for="conversation in conversations"
-            :key="conversation.id"
+            v-for="convo in chat.chats"
+            :key="convo.id"
             type="button"
             class="flex w-full items-start gap-3 px-4 py-4 text-left hover:bg-slate-50"
-            :class="selectedConversation?.id === conversation.id ? 'bg-brand-50' : ''"
-            @click="selectedConversationId = conversation.id"
+            :class="selectedChat?.id === convo.id ? 'bg-brand-50' : ''"
+            @click="selectedChatId = convo.id"
           >
             <div class="grid size-10 shrink-0 place-items-center rounded-full bg-slate-900 text-sm font-semibold text-white">
-              {{ initials(conversation.name) }}
+              {{ initials(convo.name) }}
             </div>
             <div class="min-w-0 flex-1">
               <div class="flex items-start justify-between gap-3">
                 <div class="min-w-0">
-                  <p class="truncate text-sm font-semibold text-slate-950">{{ conversation.name }}</p>
-                  <p class="mt-0.5 text-xs text-slate-500">{{ conversation.role }}</p>
+                  <p class="truncate text-sm font-semibold text-slate-950">{{ convo.name }}</p>
+                  <p class="mt-0.5 truncate text-xs text-slate-500">{{ convo.lastMessage }}</p>
                 </div>
-                <span
-                  v-if="conversation.unread"
-                  class="rounded-full bg-brand-600 px-2 py-0.5 text-xs font-semibold text-white"
-                >
-                  {{ conversation.unread }}
-                </span>
+                <span class="shrink-0 text-xs text-slate-400">{{ formatDate(convo.createdAt) }}</span>
               </div>
-              <p class="mt-2 truncate text-sm text-slate-500">{{ conversation.lastMessage }}</p>
             </div>
           </button>
         </div>
 
         <div v-else class="p-6 text-center text-sm text-slate-500">
-          No conversations found.
+          No chat messages found.
         </div>
       </aside>
 
-      <div v-if="selectedConversation" class="flex min-h-[620px] flex-col">
+      <div class="flex min-h-[620px] flex-col">
         <header class="flex items-center justify-between gap-4 border-b border-slate-100 px-5 py-4">
           <div class="min-w-0">
-            <h2 class="truncate text-base font-semibold text-slate-950">{{ selectedConversation.name }}</h2>
-            <p class="mt-1 text-sm text-slate-500">{{ selectedConversation.course }}</p>
+            <h2 class="truncate text-base font-semibold text-slate-950">{{ selectedChat ? selectedChat.name : 'New message' }}</h2>
+            <p class="mt-1 text-sm text-slate-500">{{ selectedChat ? `Conversation with ${selectedChat.name}` : 'Select a conversation to begin.' }}</p>
           </div>
-          <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">Online</span>
+          <button
+            type="button"
+            class="focus-ring rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
+            :disabled="chat.loading"
+            @click="loadChats"
+          >
+            Refresh
+          </button>
         </header>
 
-        <div class="flex-1 space-y-4 overflow-y-auto bg-slate-50 p-5">
-          <div
-            v-for="message in selectedMessages"
-            :key="message.id"
-            class="flex"
-            :class="message.mine ? 'justify-end' : 'justify-start'"
-          >
-            <div
-              class="max-w-[85%] rounded-lg px-4 py-3 text-sm shadow-sm sm:max-w-[70%]"
-              :class="message.mine ? 'bg-brand-600 text-white' : 'border border-slate-200 bg-white text-slate-700'"
-            >
-              <p>{{ message.body }}</p>
-              <p class="mt-2 text-xs" :class="message.mine ? 'text-brand-100' : 'text-slate-400'">{{ message.time }}</p>
+        <div class="flex-1 overflow-y-auto bg-slate-50 p-5">
+          <div v-if="selectedChat" class="space-y-4">
+            <div v-for="msg in sortedMessages" :key="msg.id" class="flex" :class="msg.senderId === currentUserId ? 'justify-end' : 'justify-start'">
+              <div class="max-w-[85%] rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 shadow-sm sm:max-w-[70%]">
+                <div class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-slate-500">
+                  <!-- <span class="font-semibold text-slate-700">{{ msg.senderName }}</span> -->
+                </div>
+                <p class="mt-2 whitespace-pre-line">{{ msg.message }}</p>
+                <p class="mt-2 text-xs text-slate-400">{{ formatDateTime(msg.createdAt) }}</p>
+              </div>
             </div>
+          </div>
+
+          <div v-else class="flex h-full min-h-[320px] items-center justify-center text-center text-sm text-slate-500">
+            Select a conversation to view messages.
           </div>
         </div>
 
         <form class="border-t border-slate-100 p-4" @submit.prevent="sendMessage">
-          <div class="flex flex-col gap-3 sm:flex-row">
-            <input
-              v-model.trim="draftMessage"
-              class="focus-ring min-h-11 flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm"
-              placeholder="Write a message"
-              type="text"
-            />
+          <div class="grid gap-3 lg:grid-cols-[1fr_auto]">
+            <label class="block">
+              <span class="sr-only">Message</span>
+              <textarea
+                v-model.trim="form.message"
+                class="focus-ring min-h-11 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
+                placeholder="Write a message"
+                rows="1"
+              ></textarea>
+              <p v-if="fieldError('message')" class="mt-1 text-sm text-rose-600">{{ fieldError('message') }}</p>
+            </label>
+
             <button
               type="submit"
               class="focus-ring rounded-lg bg-brand-600 px-5 py-2 text-sm font-semibold text-white hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-60"
-              :disabled="!draftMessage"
+              :disabled="chat.sending || !selectedChat || !form.message"
             >
-              Send
+              {{ chat.sending ? 'Sending...' : (selectedChat ? 'Send' : 'Select a conversation') }}
             </button>
           </div>
         </form>
-      </div>
-
-      <div v-else class="flex min-h-[420px] items-center justify-center p-8 text-center text-sm text-slate-500">
-        Select a conversation to start chatting.
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, onMounted, reactive, ref, watch } from 'vue'
+import { useTeacherPanelChatStore } from '@/stores/teacher/panelChatStore'
+import { useAuthStore } from '@/stores/auth/authStore'
 
-const conversations = [
-  {
-    id: 1,
-    name: 'Aarav Khan',
-    role: 'Student',
-    course: 'Vue Foundations',
-    lastMessage: 'Can you review my component structure?',
-    unread: 2
-  },
-  {
-    id: 2,
-    name: 'Mina Patel',
-    role: 'Student',
-    course: 'Laravel API LMS',
-    lastMessage: 'The API token flow makes sense now.',
-    unread: 0
-  },
-  {
-    id: 3,
-    name: 'Riya Das',
-    role: 'Student',
-    course: 'Pinia State Management',
-    lastMessage: 'I submitted the store refactor exercise.',
-    unread: 1
-  }
-]
+const chat = useTeacherPanelChatStore()
+const selectedChatId = ref(null)
+const form = reactive({
+  message: ''
+})
 
-const messages = {
-  1: [
-    { id: 1, body: 'Can you review my component structure?', time: '09:20 AM', mine: false },
-    { id: 2, body: 'Sure. Share the part where props are passed into the child component.', time: '09:24 AM', mine: true },
-    { id: 3, body: 'I pushed the latest version in the assignment comments.', time: '09:28 AM', mine: false }
-  ],
-  2: [
-    { id: 1, body: 'The API token flow makes sense now.', time: 'Yesterday', mine: false },
-    { id: 2, body: 'Great. Next, check how the interceptor attaches the bearer token.', time: 'Yesterday', mine: true }
-  ],
-  3: [
-    { id: 1, body: 'I submitted the store refactor exercise.', time: '08:45 AM', mine: false },
-    { id: 2, body: 'Thanks. I will review it before the live session.', time: '08:51 AM', mine: true }
-  ]
+const auth = useAuthStore()
+const currentUserId = computed(() => auth.user?.id)
+
+const selectedChat = computed(() => chat.chats.find((c) => String(c.id) === String(selectedChatId.value)) || null)
+
+const sortedMessages = computed(() => {
+  if (!selectedChat.value || !Array.isArray(selectedChat.value.raw)) return []
+  return [...selectedChat.value.raw].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
+})
+
+const fieldError = (field) => {
+  const value = chat.error?.validation?.[field]
+  return Array.isArray(value) ? value[0] : value
 }
-
-const selectedConversationId = ref(conversations[0]?.id || null)
-const draftMessage = ref('')
-
-const selectedConversation = computed(() =>
-  conversations.find((conversation) => conversation.id === selectedConversationId.value) || null
-)
-
-const selectedMessages = computed(() => messages[selectedConversationId.value] || [])
 
 const initials = (name) =>
   String(name || 'User')
@@ -163,7 +145,55 @@ const initials = (name) =>
     .join('')
     .toUpperCase()
 
-const sendMessage = () => {
-  draftMessage.value = ''
+const formatDate = (value) => {
+  if (!value) return ''
+
+  const date = new Date(value)
+  if (Number.isNaN(date.getTime())) return value
+
+  return date.toLocaleDateString()
 }
+
+const formatDateTime = (value) => {
+  if (!value) return 'Not available'
+
+  const date = new Date(value)
+  if (Number.isNaN(date.getTime())) return value
+
+  return date.toLocaleString()
+}
+
+const loadChats = async () => {
+  try {
+    await chat.fetchChats()
+  } catch {
+    // Store owns rendered error state.
+  }
+}
+
+const sendMessage = async () => {
+  if (!selectedChat.value) return
+  try {
+    await chat.sendMessage({
+      receiver_id: selectedChat.value.otherId || selectedChat.value.id,
+      message: form.message
+    })
+
+    form.message = ''
+  } catch {
+    // Store owns rendered error state.
+  }
+}
+
+watch(
+  () => chat.chats,
+  (conversations) => {
+    if (!selectedChatId.value && conversations.length) {
+      selectedChatId.value = conversations[0].id
+    }
+  },
+  { immediate: true }
+)
+
+onMounted(loadChats)
 </script>

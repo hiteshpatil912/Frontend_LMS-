@@ -39,6 +39,12 @@ export const studentRoutes = [
         meta: { title: 'Profile', requiresAuth: true, role: 'student' }
       },
       {
+        path: 'chat',
+        name: 'student.chat',
+        component: () => import('@/pages/student/Chat.vue'),
+        meta: { title: 'Chat', requiresAuth: true, role: 'student' }
+      },
+      {
         path: 'quizzes',
         name: 'student.quizzes',
         component: () => import('@/pages/student/QuizList.vue'),

@@ -25,10 +25,10 @@ const normalizeError = (error, fallback = 'Unable to process questions.') => {
 const normalizeQuestion = (question) => ({
   id: question.id,
   question: question.question || question.title || '',
-  option1: question.option_1 || question.option1 || '',
-  option2: question.option_2 || question.option2 || '',
-  option3: question.option_3 || question.option3 || '',
-  option4: question.option_4 || question.option4 || '',
+  option1: question.option_a || question.option_1 || question.option1 || '',
+  option2: question.option_b || question.option_2 || question.option2 || '',
+  option3: question.option_c || question.option_3 || question.option3 || '',
+  option4: question.option_d || question.option_4 || question.option4 || '',
   correctAnswer: question.correct_answer || question.correctAnswer || ''
 })
 

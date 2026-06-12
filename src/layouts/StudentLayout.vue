@@ -21,6 +21,7 @@ const navigation = [
   { name: 'Quizzes', to: '/student/quizzes', icon: QuestionMarkCircleIcon },
   { name: 'Certificates', to: '/student/certificates', icon: CheckBadgeIcon },
   { name: 'Wishlist', to: '/student/wishlist', icon: BookmarkIcon },
+  { name: 'Chat', to: '/student/chat', icon: QuestionMarkCircleIcon },
   { name: 'Notifications', to: '/student/notifications', icon: BellIcon }
 ]
 </script>

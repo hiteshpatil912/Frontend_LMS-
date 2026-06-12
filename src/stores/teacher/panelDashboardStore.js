@@ -53,14 +53,15 @@ export const useTeacherPanelDashboardStore = defineStore('teacherPanelDashboard'
 
       try {
         const response = await teacherDashboardService.getDashboard()
+        // Backend returns response.data.data.dashboard
         const data = unwrap(response)
-        const stats = data.stats || data.summary || data.totals || data
+        const dashboardData = data.dashboard || data
 
         this.totals = {
-          totalCourses: numberFrom(stats.total_courses, stats.totalCourses, stats.courses),
-          totalStudents: numberFrom(stats.total_students, stats.totalStudents, stats.students),
-          totalLessons: numberFrom(stats.total_lessons, stats.totalLessons, stats.lessons),
-          totalQuizzes: numberFrom(stats.total_quizzes, stats.totalQuizzes, stats.quizzes)
+          totalCourses: numberFrom(dashboardData.courses_count, dashboardData.coursesCount, dashboardData.courses),
+          totalStudents: numberFrom(dashboardData.students_count, dashboardData.studentsCount, dashboardData.students),
+          totalLessons: numberFrom(dashboardData.lessons_count, dashboardData.lessonsCount, dashboardData.lessons),
+          totalQuizzes: numberFrom(dashboardData.quizzes_count, dashboardData.quizzesCount, dashboardData.quizzes)
         }
       } catch (error) {
         this.error = normalizeError(error)

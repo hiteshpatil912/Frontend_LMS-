@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import api from '@/plugins/axios'
+import { useAuthStore } from '@/stores/auth/authStore'
 
 
 
@@ -41,7 +42,38 @@ export const useChatStore = defineStore('chat', {
       try {
         const { data } = await api.get('/student/chat', { params })
         const result = normalize(data)
-        this.chats = result.chats || result
+        const auth = useAuthStore()
+        const raw = result.chats || result
+        // If backend returns a flat list of messages, group by other participant
+        if (Array.isArray(raw) && raw.length && raw[0].sender_id) {
+          const normalized = raw.map((chat) => ({
+            id: chat.id,
+            senderId: chat.sender_id || chat.senderId || chat.sender?.id,
+            receiverId: chat.receiver_id || chat.receiverId || chat.receiver?.id,
+            senderName: chat.sender?.name || chat.sender?.email || `User #${chat.sender_id || chat.senderId || 'unknown'}`,
+            receiverName: chat.receiver?.name || chat.receiver?.email || `User #${chat.receiver_id || chat.receiverId || 'unknown'}`,
+            message: chat.message || chat.body || '',
+            createdAt: chat.created_at || chat.createdAt || ''
+          }))
+
+          const groups = {}
+          normalized.forEach((item) => {
+            const otherId = String(item.senderId) === String(auth.user?.id) ? String(item.receiverId) : String(item.senderId)
+            if (!groups[otherId]) {
+              groups[otherId] = { id: otherId, otherId, name: String(item.senderId) === String(auth.user?.id) ? item.receiverName : item.senderName, lastMessage: item.message, createdAt: item.createdAt, raw: [item] }
+            } else {
+              groups[otherId].raw.push(item)
+              if (new Date(item.createdAt) > new Date(groups[otherId].createdAt)) {
+                groups[otherId].lastMessage = item.message
+                groups[otherId].createdAt = item.createdAt
+              }
+            }
+          })
+
+          this.chats = Object.values(groups).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+        } else {
+          this.chats = raw
+        }
         this.discussionRooms = result.discussionRooms || this.discussionRooms
       } catch (error) {
         this.errors = { general: 'Unable to sync chats. Showing local messages.' }
