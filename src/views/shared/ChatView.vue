@@ -14,32 +14,111 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue'
-import ChatSidebar from '@/components/chat/ChatSidebar.vue'
-import ChatWindow from '@/components/chat/ChatWindow.vue'
-import { useChatStore } from '@/stores/shared/chatStore'
-import { useMessageStore } from '@/stores/shared/messageStore'
+import { computed, onMounted, onUnmounted } from "vue";
+import ChatSidebar from "@/components/chat/ChatSidebar.vue";
+import ChatWindow from "@/components/chat/ChatWindow.vue";
+import { useChatStore } from "@/stores/shared/chatStore";
+import { useMessageStore } from "@/stores/shared/messageStore";
+import { useAuthStore } from "@/stores/auth/authStore";
 
-const props = defineProps({ role: { type: String, default: 'student' } })
-const chatStore = useChatStore()
-const messageStore = useMessageStore()
+const props = defineProps({
+  role: {
+    type: String,
+    default: "student",
+  },
+});
 
-const roleLabel = computed(() => (props.role === 'admin' ? 'Chat monitoring' : props.role === 'teacher' ? 'Teacher messaging' : 'Student messaging'))
-const activeMessages = computed(() => (chatStore.activeChat ? messageStore.messagesForChat(chatStore.activeChat.id) : []))
+const chatStore = useChatStore();
+const messageStore = useMessageStore();
+const auth = useAuthStore();
+
+const roleLabel = computed(() =>
+  props.role === "admin"
+    ? "Chat monitoring"
+    : props.role === "teacher"
+    ? "Teacher messaging"
+    : "Student messaging"
+);
+
+const sortedMessages = computed(() => {
+  if (!chatStore.activeChat) return [];
+
+  const msgs =
+    messageStore.messagesForChat(chatStore.activeChat.id) || [];
+
+  return [...msgs].sort(
+    (a, b) =>
+      new Date(a.created_at || a.createdAt).getTime() -
+      new Date(b.created_at || b.createdAt).getTime()
+  );
+});
 
 const selectChat = async (chat) => {
-  chatStore.setActiveChat(chat)
-  await messageStore.fetchMessages(chat.id)
-}
+  chatStore.setActiveChat(chat);
+  await messageStore.fetchMessages(chat.otherId);
+};
 
 const sendMessage = async (payload) => {
-  if (!chatStore.activeChat) return
-  const message = await messageStore.sendMessage(chatStore.activeChat.id, payload)
-  chatStore.receiveRealtimeMessage(chatStore.activeChat.id, message)
-}
+  if (!chatStore.activeChat) return;
+
+  const message = await messageStore.sendMessage(
+    chatStore.activeChat.otherId,
+    payload
+  );
+
+  chatStore.receiveRealtimeMessage(
+    chatStore.activeChat.otherId,
+    message
+  );
+};
+
+const refreshChats = async () => {
+  await chatStore.fetchChats({
+    role: props.role,
+  });
+
+  if (chatStore.activeChat) {
+    await messageStore.fetchMessages(
+      chatStore.activeChat.otherId
+    );
+  }
+};
 
 onMounted(async () => {
-  await chatStore.fetchChats({ role: props.role })
-  if (!chatStore.activeChat && chatStore.chats.length) await selectChat(chatStore.chats[0])
-})
+  await auth.bootstrap();
+
+  await chatStore.fetchChats({
+    role: props.role,
+  });
+
+  if (
+    !chatStore.activeChat &&
+    chatStore.chats.length
+  ) {
+    await selectChat(chatStore.chats[0]);
+  }
+
+  const userId = auth.user?.id;
+
+  console.log("Echo User =", userId);
+
+  if (!userId) return;
+
+  // Subscribe to the private channel
+  const channel = window.Echo.private(`chat.${userId}`);
+  
+  // Listen for message events. Note: verify if backend uses .broadcastAs() 
+  // if ".message.sent" fails, try "MessageSent"
+  channel.listen(".message.sent", async (e) => {
+    console.log("Realtime Message Received:", e);
+    await refreshChats();
+  });
+});
+
+onUnmounted(() => {
+  const userId = auth.user?.id;
+  if (userId) {
+    window.Echo.leave(`chat.${userId}`);
+  }
+});
 </script>

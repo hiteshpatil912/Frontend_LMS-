@@ -5,6 +5,8 @@ import router from '@/router'
 import { useAuthStore } from '@/stores/auth/authStore'
 import '@/assets/main.css'
 import '@/plugins/axios'
+import '@/bootstrap'
+
 
 const pinia = createPinia()
 

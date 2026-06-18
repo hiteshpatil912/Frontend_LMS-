@@ -55,16 +55,37 @@ export const useAdminPanelDashboardStore = defineStore('adminPanelDashboard', {
 
       try {
         const response = await adminDashboardService.getDashboard()
-        const data = unwrap(response)
-        const stats = data.stats || data.summary || data.totals || data
 
-        this.totals = {
-          totalUsers: numberFrom(stats.total_users, stats.totalUsers, stats.users),
-          totalStudents: numberFrom(stats.total_students, stats.totalStudents, stats.students),
-          totalTeachers: numberFrom(stats.total_teachers, stats.totalTeachers, stats.teachers),
-          totalCourses: numberFrom(stats.total_courses, stats.totalCourses, stats.courses),
-          totalRevenue: numberFrom(stats.total_revenue, stats.totalRevenue, stats.revenue)
-        }
+const data = unwrap(response)
+const dashboardData = data.dashboard || data
+
+this.totals = {
+  totalUsers: numberFrom(
+    dashboardData.total_users,
+    dashboardData.totalUsers,
+    dashboardData.users
+  ),
+  totalStudents: numberFrom(
+    dashboardData.total_students,
+    dashboardData.totalStudents,
+    dashboardData.students
+  ),
+  totalTeachers: numberFrom(
+    dashboardData.total_teachers,
+    dashboardData.totalTeachers,
+    dashboardData.teachers
+  ),
+  totalCourses: numberFrom(
+    dashboardData.total_courses,
+    dashboardData.totalCourses,
+    dashboardData.courses
+  ),
+  totalRevenue: numberFrom(
+    dashboardData.total_revenue,
+    dashboardData.totalRevenue,
+    dashboardData.revenue
+  )
+}
       } catch (error) {
         this.error = normalizeError(error)
         throw error

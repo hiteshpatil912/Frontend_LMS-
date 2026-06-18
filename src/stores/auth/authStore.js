@@ -49,11 +49,16 @@ const normalizeErrors = (error) => {
   }
 
   if (status === 403) {
-    return { general: 'You do not have permission to perform this action.' }
+    return {
+      general: 'You do not have permission to perform this action.'
+    }
   }
 
   return {
-    general: data?.message || error.message || 'Something went wrong. Please try again.'
+    general:
+      data?.message ||
+      error.message ||
+      'Something went wrong. Please try again.'
   }
 }
 
@@ -67,10 +72,18 @@ export const useAuthStore = defineStore('auth', {
   }),
 
   getters: {
-    isAuthenticated: (state) => Boolean(state.token && state.user),
-    role: (state) => normalizeRole(state.user?.role) || null,
-    isStudent: (state) => normalizeRole(state.user?.role) === 'student',
-    redirectPath: (state) => roleHome[normalizeRole(state.user?.role)] || '/login'
+    isAuthenticated: (state) =>
+      Boolean(state.token && state.user),
+
+    role: (state) =>
+      normalizeRole(state.user?.role) || null,
+
+    isStudent: (state) =>
+      normalizeRole(state.user?.role) === 'student',
+
+    redirectPath: (state) =>
+      roleHome[normalizeRole(state.user?.role)] ||
+      '/login'
   },
 
   actions: {
@@ -83,7 +96,16 @@ export const useAuthStore = defineStore('auth', {
       this.user = user
 
       localStorage.setItem(TOKEN_KEY, token)
-      localStorage.setItem(USER_KEY, JSON.stringify(user))
+      localStorage.setItem(
+        USER_KEY,
+        JSON.stringify(user)
+      )
+
+      if (window.updateEchoToken) {
+        window.updateEchoToken(token);
+      }
+
+      this.bootstrapped = true
     },
 
     clearSession() {
@@ -94,6 +116,10 @@ export const useAuthStore = defineStore('auth', {
 
       localStorage.removeItem(TOKEN_KEY)
       localStorage.removeItem(USER_KEY)
+
+      if (window.updateEchoToken) {
+        window.updateEchoToken("");
+      }
     },
 
     async login(credentials) {
@@ -101,11 +127,16 @@ export const useAuthStore = defineStore('auth', {
       this.clearErrors()
 
       try {
-        const response = await authService.login(credentials)
-        const session = normalizeAuthPayload(response)
+        const response =
+          await authService.login(credentials)
+
+        const session =
+          normalizeAuthPayload(response)
 
         if (!session.token || !session.user) {
-          throw new Error('Login response did not include a token and user.')
+          throw new Error(
+            'Login response did not include a token and user.'
+          )
         }
 
         this.setSession(session)
@@ -120,8 +151,12 @@ export const useAuthStore = defineStore('auth', {
     },
 
     async fetchUser({ force = false } = {}) {
-      const storedToken = localStorage.getItem(TOKEN_KEY)
-      const storedUser = safelyParseJson(localStorage.getItem(USER_KEY))
+      const storedToken =
+        localStorage.getItem(TOKEN_KEY)
+
+      const storedUser = safelyParseJson(
+        localStorage.getItem(USER_KEY)
+      )
 
       if (!storedToken) {
         this.clearSession()
@@ -138,21 +173,45 @@ export const useAuthStore = defineStore('auth', {
       }
 
       try {
-        const response = await authService.fetchUser()
-        const user = normalizeUserPayload(response)
+        const response =
+          await authService.fetchUser()
+
+        const user =
+          normalizeUserPayload(response)
 
         if (!user) {
-          throw new Error('User response was empty.')
+          throw new Error(
+            'User response was empty.'
+          )
         }
 
         this.user = user
-        localStorage.setItem(USER_KEY, JSON.stringify(user))
+
+        localStorage.setItem(
+          USER_KEY,
+          JSON.stringify(user)
+        )
+
         this.bootstrapped = true
 
         return this.user
       } catch (error) {
         this.clearSession()
         throw error
+      }
+    },
+
+    // ✅ NEW METHOD
+    async bootstrap() {
+      if (this.bootstrapped) {
+        return this.user
+      }
+
+      try {
+        return await this.fetchUser()
+      } catch (error) {
+        this.clearSession()
+        return null
       }
     },
 

@@ -30,20 +30,25 @@ const normalizeChat = (chat) => ({
   senderName: userName(chat.sender, `User #${chat.sender_id || chat.senderId || 'unknown'}`),
   receiverName: userName(chat.receiver, `User #${chat.receiver_id || chat.receiverId || 'unknown'}`),
   message: chat.message || chat.body || '',
-  createdAt: chat.created_at || chat.createdAt || ''
+  createdAt: chat.created_at || chat.createdAt || '',
+  seen_at: chat.seen_at ?? null,   // ⭐ ADD THIS
+  mine: false                      // ⭐ optional
 })
 
 const groupByParticipant = (items = [], currentUserId) => {
   const groups = {}
 
   items.forEach((item) => {
-    const otherId = String(item.senderId) === String(currentUserId) ? String(item.receiverId) : String(item.senderId)
+    const otherId = String(item.sender_id || item.senderId) === String(currentUserId) 
+      ? String(item.receiver_id || item.receiverId) 
+      : String(item.sender_id || item.senderId)
+      
     if (!groups[otherId]) {
       groups[otherId] = {
-        id: otherId, // use other participant id as conversation id fallback
+        id: otherId,
         otherId,
-        name: String(item.senderId) === String(currentUserId) ? item.receiverName : item.senderName,
-        lastMessage: item.message,
+        name: String(item.sender_id || item.senderId) === String(currentUserId) ? item.receiverName : item.senderName,
+        lastMessage: item.message || item.body || '',
         createdAt: item.createdAt,
         raw: [item]
       }
