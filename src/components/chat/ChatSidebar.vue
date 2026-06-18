@@ -10,7 +10,7 @@
     <div v-else class="max-h-[640px] overflow-y-auto p-2">
       <button v-for="chat in chats" :key="chat.id" class="w-full rounded-lg p-3 text-left hover:bg-slate-50" :class="activeId === chat.id ? 'bg-brand-50' : ''" type="button" @click="$emit('select', chat)">
         <div class="flex gap-3">
-          <div class="grid size-10 shrink-0 place-items-center rounded-full bg-slate-900 text-sm font-semibold text-white">{{ chat.avatar }}</div>
+          <div class="grid size-10 shrink-0 place-items-center rounded-full bg-slate-900 text-sm font-semibold text-white">{{ (chat.name || "?").charAt(0).toUpperCase() }}</div>
           <div class="min-w-0 flex-1">
             <div class="flex items-center justify-between gap-2">
               <p class="truncate text-sm font-semibold text-slate-950">{{ chat.name }}</p>

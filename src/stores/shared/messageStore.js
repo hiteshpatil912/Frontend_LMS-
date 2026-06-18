@@ -22,6 +22,8 @@ export const useMessageStore = defineStore("messages", {
 
   actions: {
     async fetchMessages(chatId) {
+      console.log("fetchMessages", chatId);
+
       this.loading = true;
       this.errors = {};
 
@@ -55,20 +57,23 @@ export const useMessageStore = defineStore("messages", {
             body: m.message || m.body || "",
           }));
         // Mark messages as seen
-        try {
-          await api.patch(`/chat/${chatId}/seen`);
+     // Mark messages as seen
+try {
 
-          this.messages[chatId] = this.messages[chatId].map((m) => ({
-            ...m,
-            seen_at:
-              String(m.sender_id || m.senderId || m.sender?.id) ===
-              selectedUserId
-                ? new Date().toISOString()
-                : m.seen_at,
-          }));
-        } catch (e) {
-          console.log("Seen API failed", e);
-        }
+  await api.patch(`/chat/${chatId}/seen`);
+
+  this.messages[chatId] = this.messages[chatId].map((m) => ({
+    ...m,
+    seen_at:
+      String(m.sender_id || m.senderId || m.sender?.id) ===
+      selectedUserId
+        ? new Date().toISOString()
+        : m.seen_at,
+  }));
+
+} catch (e) {
+  console.log("Seen API failed", e);
+}
       } catch (error) {
         this.errors = {
           general: "Unable to load messages.",
@@ -78,6 +83,7 @@ export const useMessageStore = defineStore("messages", {
       } finally {
         this.loading = false;
       }
+      console.log("loaded", this.messages[chatId]);
     },
 
     async sendMessage(chatId, payload) {
@@ -100,7 +106,7 @@ export const useMessageStore = defineStore("messages", {
           ...rawMessage,
           mine: true,
           body: rawMessage.message || rawMessage.body || payload.body,
-            seen_at: rawMessage.seen_at ?? null   // ⭐ ADD
+          seen_at: rawMessage.seen_at ?? null, // ⭐ ADD
         };
 
         this.messages[chatId] = [...(this.messages[chatId] || []), message];

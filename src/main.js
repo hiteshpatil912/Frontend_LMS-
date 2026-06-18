@@ -7,6 +7,8 @@ import '@/assets/main.css'
 import '@/plugins/axios'
 import '@/bootstrap'
 
+console.log("🚀 main.js loaded");
+console.log("Echo =", window.Echo);
 
 const pinia = createPinia()
 

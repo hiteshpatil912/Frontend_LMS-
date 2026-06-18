@@ -1,0 +1,172 @@
+warning: in the working copy of 'src/components/chat/ChatInput.vue', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/chat/ChatSidebar.vue', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/main.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/pages/teacher/Chat.vue', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/stores/shared/messageStore.js', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/src/bootstrap.js b/src/bootstrap.js[m
+[1mindex 81c971c..a7b41cc 100644[m
+[1m--- a/src/bootstrap.js[m
+[1m+++ b/src/bootstrap.js[m
+[36m@@ -7,6 +7,10 @@[m [mwindow.Pusher = Pusher;[m
+ [m
+ const token = localStorage.getItem("token");[m
+ [m
+[32m+[m[32mconsole.log("KEY:", import.meta.env.VITE_REVERB_APP_KEY);[m
+[32m+[m[32mconsole.log("HOST:", import.meta.env.VITE_REVERB_HOST);[m
+[32m+[m[32mconsole.log("PORT:", import.meta.env.VITE_REVERB_PORT);[m
+[32m+[m
+ console.log("🔥 Token =", token);[m
+ [m
+ window.Echo = new Echo({[m
+[36m@@ -31,6 +35,17 @@[m [mwindow.Echo = new Echo({[m
+   },[m
+ });[m
+ [m
+[32m+[m[32mwindow.Echo.connector.pusher.connection.bind("connected", () => {[m
+[32m+[m[32m  console.log("✅ Reverb Connected");[m
+[32m+[m[32m});[m
+[32m+[m
+[32m+[m[32mwindow.Echo.connector.pusher.connection.bind("error", (err) => {[m
+[32m+[m[32m  console.error("❌ Reverb Error", err);[m
+[32m+[m[32m});[m
+[32m+[m
+[32m+[m[32mwindow.Echo.connector.pusher.connection.bind("disconnected", () => {[m
+[32m+[m[32m  console.log("⚠️ Reverb Disconnected");[m
+[32m+[m[32m});[m
+ // Expose a helper to update headers dynamically after login[m
+ window.updateEchoToken = (newToken) => {[m
+   if (window.Echo) {[m
+[1mdiff --git a/src/components/chat/ChatInput.vue b/src/components/chat/ChatInput.vue[m
+[1mindex 0b673c2..f9b8668 100644[m
+[1m--- a/src/components/chat/ChatInput.vue[m
+[1m+++ b/src/components/chat/ChatInput.vue[m
+[36m@@ -13,7 +13,7 @@[m
+         <PaperClipIcon class="size-5" />[m
+         <input class="sr-only" type="file" @change="attachmentName = $event.target.files?.[0]?.name || ''" />[m
+       </label>[m
+[31m-      <textarea v-model.trim="body" class="focus-ring min-h-11 flex-1 resize-none rounded-lg border border-slate-300 px-3 py-2 text-sm" placeholder="Write a message"></textarea>[m
+[32m+[m[32m      <textarea  @keydown.enter.exact.prevent="submit" v-model.trim="body" class="focus-ring min-h-11 flex-1 resize-none rounded-lg border border-slate-300 px-3 py-2 text-sm" placeholder="Write a message"></textarea>[m
+       <button class="focus-ring rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-70" type="submit" :disabled="loading || !body">[m
+         Send[m
+       </button>[m
+[36m@@ -23,20 +23,37 @@[m
+ </template>[m
+ [m
+ <script setup>[m
+[31m-import { ref } from 'vue'[m
+[31m-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'[m
+[31m-import { PaperClipIcon } from '@heroicons/vue/24/outline'[m
+[32m+[m[32mimport { ref } from "vue";[m
+[32m+[m[32mimport {[m
+[32m+[m[32m  Menu,[m
+[32m+[m[32m  MenuButton,[m
+[32m+[m[32m  MenuItem,[m
+[32m+[m[32m  MenuItems,[m
+[32m+[m[32m} from "@headlessui/vue";[m
+[32m+[m[32mimport { PaperClipIcon } from "@heroicons/vue/24/outline";[m
+ [m
+[31m-defineProps({ loading: { type: Boolean, default: false } })[m
+[31m-const emit = defineEmits(['send'])[m
+[31m-const emojis = ['👍', '👏', '🙂', '🔥', '✅', '💡', '🙏', '🎯'][m
+[31m-const body = ref('')[m
+[31m-const attachmentName = ref('')[m
+[32m+[m[32mdefineProps({[m
+[32m+[m[32m  loading: {[m
+[32m+[m[32m    type: Boolean,[m
+[32m+[m[32m    default: false,[m
+[32m+[m[32m  },[m
+[32m+[m[32m});[m
+[32m+[m
+[32m+[m[32mconst emit = defineEmits(["send"]);[m
+[32m+[m
+[32m+[m[32mconst emojis = ["👍", "👏", "🙂", "🔥", "✅", "💡", "🙏", "🎯"];[m
+[32m+[m
+[32m+[m[32mconst body = ref("");[m
+[32m+[m[32mconst attachmentName = ref("");[m
+ [m
+ const submit = () => {[m
+[31m-  if (!body.value) return[m
+[31m-  emit('send', { body: body.value, attachmentName: attachmentName.value })[m
+[31m-  body.value = ''[m
+[31m-  attachmentName.value = ''[m
+[31m-}[m
+[32m+[m[32m  if (!body.value.trim()) return;[m
+[32m+[m
+[32m+[m[32m  emit("send", {[m
+[32m+[m[32m    body: body.value,[m
+[32m+[m[32m  });[m
+[32m+[m
+[32m+[m[32m  body.value = "";[m
+[32m+[m[32m  attachmentName.value = "";[m
+[32m+[m[32m};[m
+ </script>[m
+[1mdiff --git a/src/components/chat/ChatSidebar.vue b/src/components/chat/ChatSidebar.vue[m
+[1mindex 38a9ab5..e192b92 100644[m
+[1m--- a/src/components/chat/ChatSidebar.vue[m
+[1m+++ b/src/components/chat/ChatSidebar.vue[m
+[36m@@ -10,7 +10,7 @@[m
+     <div v-else class="max-h-[640px] overflow-y-auto p-2">[m
+       <button v-for="chat in chats" :key="chat.id" class="w-full rounded-lg p-3 text-left hover:bg-slate-50" :class="activeId === chat.id ? 'bg-brand-50' : ''" type="button" @click="$emit('select', chat)">[m
+         <div class="flex gap-3">[m
+[31m-          <div class="grid size-10 shrink-0 place-items-center rounded-full bg-slate-900 text-sm font-semibold text-white">{{ chat.avatar }}</div>[m
+[32m+[m[32m          <div class="grid size-10 shrink-0 place-items-center rounded-full bg-slate-900 text-sm font-semibold text-white">{{ (chat.name || "?").charAt(0).toUpperCase() }}</div>[m
+           <div class="min-w-0 flex-1">[m
+             <div class="flex items-center justify-between gap-2">[m
+               <p class="truncate text-sm font-semibold text-slate-950">{{ chat.name }}</p>[m
+[1mdiff --git a/src/main.js b/src/main.js[m
+[1mindex 4488546..ca48477 100644[m
+[1m--- a/src/main.js[m
+[1m+++ b/src/main.js[m
+[36m@@ -7,6 +7,8 @@[m [mimport '@/assets/main.css'[m
+ import '@/plugins/axios'[m
+ import '@/bootstrap'[m
+ [m
+[32m+[m[32mconsole.log("🚀 main.js loaded");[m
+[32m+[m[32mconsole.log("Echo =", window.Echo);[m
+ [m
+ const pinia = createPinia()[m
+ [m
+[1mdiff --git a/src/pages/teacher/Chat.vue b/src/pages/teacher/Chat.vue[m
+[1mindex 6dcf57c..984c11b 100644[m
+[1m--- a/src/pages/teacher/Chat.vue[m
+[1m+++ b/src/pages/teacher/Chat.vue[m
+[36m@@ -1,324 +1,7 @@[m
+ <template>[m
+[31m-  <section class="space-y-6">[m
+[31m-    <div>[m
+[31m-      <p class="text-sm font-medium text-brand-700">Teacher workspace</p>[m
+[31m-      <h1 class="mt-1 text-2xl font-semibold text-slate-950">Chat</h1>[m
+[31m-      <p class="mt-1 text-sm text-slate-500">[m
+[31m-        Review learner conversations and respond to course questions.[m
+[31m-      </p>[m
+[31m-    </div>[m
+[31m-[m
+[31m-    <div[m
+[31m-      v-if="chat.error"[m
+[31m-      class="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700"[m
+[31m-    >[m
+[31m-      {{ chat.error.message }}[m
+[31m-    </div>[m
+[31m-[m
+[31m-    <div[m
+[31m-      class="grid min-h-[620px] overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm lg:grid-cols-[340px_1fr]"[m
+[31m-    >[m
+[31m-      <aside class="border-b border-slate-200 lg:border-b-0 lg:border-r">[m
+[31m-        <div class="border-b border-slate-100 p-4">[m
+[31m-          <h2 class="text-sm font-semibold text-slate-950">Conversations</h2>[m
+[31m-          <p class="mt-1 text-xs text-slate-500">{{ chat.chats.length }} conversations</p>[m
+[31m-        </div>[m
+[31m-[m
+[31m-        <div v-if="chat.loading" class="space-y-3 p-4">[m
+[31m-          <div[m
+[31m-            v-for="item in 5"[m
+[31m-            :key="item"[m
+[31m-            class="h-16 animate-pulse rounded-lg bg-slate-100"[m
+[31m-          ></div>[m
+[31m-        </div>[m
+[31m-[m
+[31m-        <div[m
+[31m-          v-else-if="chat.chats.length"[m
+[31m-          class="max-h-[560px] divide-y divide-slate-100 overflow-y-auto"[m
+[31m-        >[m
+[31m-          <

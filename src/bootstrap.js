@@ -7,6 +7,10 @@ window.Pusher = Pusher;
 
 const token = localStorage.getItem("token");
 
+console.log("KEY:", import.meta.env.VITE_REVERB_APP_KEY);
+console.log("HOST:", import.meta.env.VITE_REVERB_HOST);
+console.log("PORT:", import.meta.env.VITE_REVERB_PORT);
+
 console.log("🔥 Token =", token);
 
 window.Echo = new Echo({
@@ -31,6 +35,17 @@ window.Echo = new Echo({
   },
 });
 
+window.Echo.connector.pusher.connection.bind("connected", () => {
+  console.log("✅ Reverb Connected");
+});
+
+window.Echo.connector.pusher.connection.bind("error", (err) => {
+  console.error("❌ Reverb Error", err);
+});
+
+window.Echo.connector.pusher.connection.bind("disconnected", () => {
+  console.log("⚠️ Reverb Disconnected");
+});
 // Expose a helper to update headers dynamically after login
 window.updateEchoToken = (newToken) => {
   if (window.Echo) {

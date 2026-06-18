@@ -13,7 +13,7 @@
         <PaperClipIcon class="size-5" />
         <input class="sr-only" type="file" @change="attachmentName = $event.target.files?.[0]?.name || ''" />
       </label>
-      <textarea v-model.trim="body" class="focus-ring min-h-11 flex-1 resize-none rounded-lg border border-slate-300 px-3 py-2 text-sm" placeholder="Write a message"></textarea>
+      <textarea  @keydown.enter.exact.prevent="submit" v-model.trim="body" class="focus-ring min-h-11 flex-1 resize-none rounded-lg border border-slate-300 px-3 py-2 text-sm" placeholder="Write a message"></textarea>
       <button class="focus-ring rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-70" type="submit" :disabled="loading || !body">
         Send
       </button>
@@ -23,20 +23,37 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { PaperClipIcon } from '@heroicons/vue/24/outline'
+import { ref } from "vue";
+import {
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+} from "@headlessui/vue";
+import { PaperClipIcon } from "@heroicons/vue/24/outline";
 
-defineProps({ loading: { type: Boolean, default: false } })
-const emit = defineEmits(['send'])
-const emojis = ['👍', '👏', '🙂', '🔥', '✅', '💡', '🙏', '🎯']
-const body = ref('')
-const attachmentName = ref('')
+defineProps({
+  loading: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+const emit = defineEmits(["send"]);
+
+const emojis = ["👍", "👏", "🙂", "🔥", "✅", "💡", "🙏", "🎯"];
+
+const body = ref("");
+const attachmentName = ref("");
 
 const submit = () => {
-  if (!body.value) return
-  emit('send', { body: body.value, attachmentName: attachmentName.value })
-  body.value = ''
-  attachmentName.value = ''
-}
+  if (!body.value.trim()) return;
+
+  emit("send", {
+    body: body.value,
+  });
+
+  body.value = "";
+  attachmentName.value = "";
+};
 </script>

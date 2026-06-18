@@ -3,12 +3,26 @@
     <div>
       <p class="text-sm font-medium text-brand-700">{{ roleLabel }}</p>
       <h2 class="mt-1 text-2xl font-semibold text-slate-950">Live Chat</h2>
-      <p class="mt-2 max-w-2xl text-sm text-slate-500">Direct messages, course conversations, unread state, and realtime-ready messaging.</p>
+      <p class="mt-2 max-w-2xl text-sm text-slate-500">
+        Direct messages, course conversations, unread state, and realtime-ready messaging.
+      </p>
     </div>
 
     <div class="grid gap-5 xl:grid-cols-[360px_1fr]">
-      <ChatSidebar :chats="chatStore.chats" :active-id="chatStore.activeChat?.id" :unread-total="chatStore.unreadTotal" :loading="chatStore.loading" @select="selectChat" />
-      <ChatWindow :chat="chatStore.activeChat" :messages="activeMessages" :loading="messageStore.loading" :sending="messageStore.sending" @send="sendMessage" />
+      <ChatSidebar
+        :chats="chatStore.chats"
+        :active-id="chatStore.activeChat?.id"
+        :unread-total="0"
+        :loading="chatStore.loading"
+        @select="selectChat"
+      />
+      <ChatWindow
+        :chat="chatStore.activeChat"
+        :messages="sortedMessages"
+        :loading="false"
+        :sending="messageStore.sending"
+        @send="sendMessage"
+      />
     </div>
   </section>
 </template>
@@ -43,8 +57,7 @@ const roleLabel = computed(() =>
 const sortedMessages = computed(() => {
   if (!chatStore.activeChat) return [];
 
-  const msgs =
-    messageStore.messagesForChat(chatStore.activeChat.id) || [];
+  const msgs = messageStore.messagesForChat(chatStore.activeChat.id) || [];
 
   return [...msgs].sort(
     (a, b) =>
@@ -61,15 +74,12 @@ const selectChat = async (chat) => {
 const sendMessage = async (payload) => {
   if (!chatStore.activeChat) return;
 
-  const message = await messageStore.sendMessage(
-    chatStore.activeChat.otherId,
-    payload
-  );
+  const message = await messageStore.sendMessage(chatStore.activeChat.otherId, payload);
 
-  chatStore.receiveRealtimeMessage(
-    chatStore.activeChat.otherId,
-    message
-  );
+  // chatStore.receiveRealtimeMessage(
+  //   chatStore.activeChat.otherId,
+  //   message
+  // );
 };
 
 const refreshChats = async () => {
@@ -78,9 +88,7 @@ const refreshChats = async () => {
   });
 
   if (chatStore.activeChat) {
-    await messageStore.fetchMessages(
-      chatStore.activeChat.otherId
-    );
+    await messageStore.fetchMessages(chatStore.activeChat.otherId);
   }
 };
 
@@ -91,10 +99,7 @@ onMounted(async () => {
     role: props.role,
   });
 
-  if (
-    !chatStore.activeChat &&
-    chatStore.chats.length
-  ) {
+  if (!chatStore.activeChat && chatStore.chats.length) {
     await selectChat(chatStore.chats[0]);
   }
 
@@ -106,13 +111,17 @@ onMounted(async () => {
 
   // Subscribe to the private channel
   const channel = window.Echo.private(`chat.${userId}`);
-  
-  // Listen for message events. Note: verify if backend uses .broadcastAs() 
-  // if ".message.sent" fails, try "MessageSent"
-  channel.listen(".message.sent", async (e) => {
-    console.log("Realtime Message Received:", e);
-    await refreshChats();
-  });
+ channel.listen(".message.sent", async (e) => {
+
+    const chat = e.chat;
+
+    await messageStore.fetchMessages(chat.sender_id);
+
+    await chatStore.fetchChats({
+        role: props.role,
+    });
+
+});
 });
 
 onUnmounted(() => {
