@@ -7,6 +7,7 @@ window.Pusher = Pusher;
 
 const token = localStorage.getItem("token");
 
+
 console.log("KEY:", import.meta.env.VITE_REVERB_APP_KEY);
 console.log("HOST:", import.meta.env.VITE_REVERB_HOST);
 console.log("PORT:", import.meta.env.VITE_REVERB_PORT);
@@ -33,6 +34,9 @@ window.Echo = new Echo({
       Accept: "application/json",
     },
   },
+});
+window.Echo.connector.pusher.connection.bind("state_change", (states) => {
+  console.log("STATE:", states);
 });
 
 window.Echo.connector.pusher.connection.bind("connected", () => {

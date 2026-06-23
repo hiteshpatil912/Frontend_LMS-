@@ -35,6 +35,8 @@ export const useChatStore = defineStore("chat", {
   },
   actions: {
     async fetchChats(params = {}) {
+      const oldChats = this.chats;
+
       this.loading = true;
       this.errors = {};
 
@@ -58,16 +60,33 @@ export const useChatStore = defineStore("chat", {
             const otherId = s === currentUserId ? r : s;
 
             if (!groups[otherId]) {
+              const existing = oldChats.find(
+                (c) => String(c.otherId) === String(otherId),
+              );
+
               groups[otherId] = {
                 id: otherId,
                 otherId,
+
                 name:
                   s === currentUserId
                     ? m.receiver?.name || m.receiver?.email || `User #${r}`
                     : m.sender?.name || m.sender?.email || `User #${s}`,
+
                 lastMessage: m.message || "",
+
                 createdAt: m.created_at || m.createdAt,
+
+                course_id: m.course_id ?? m.course?.id ?? null,
+                
                 raw: [],
+
+                // ⭐ Preserve previous state
+                typing: existing?.typing ?? false,
+
+                online: existing?.online ?? false,
+
+                unread: existing?.unread ?? 0,
               };
             }
 
@@ -120,10 +139,22 @@ export const useChatStore = defineStore("chat", {
       }
     },
     setActiveChat(chat) {
-      this.activeChat = chat;
-      this.chats = this.chats.map((item) =>
-        String(item.id) === String(chat.id) ? { ...item, unread: 0 } : item,
-      );
+      this.chats = this.chats.map((item) => {
+        if (String(item.id) === String(chat.id)) {
+          this.activeChat = {
+            ...item,
+            unread: 0,
+          };
+
+          return {
+            ...item,
+            unread: 0,
+          };
+        }
+
+        return item;
+      });
+
       this.unreadMessages = this.unreadTotal;
     },
     async createDiscussionRoom(payload) {
@@ -157,7 +188,16 @@ export const useChatStore = defineStore("chat", {
         this.saving = false;
       }
     },
+
     receiveRealtimeMessage(chatId, message) {
+      const exists = this.chats.some(
+        (c) => String(c.otherId) === String(chatId),
+      );
+
+      if (!exists) {
+        this.fetchChats();
+        return;
+      }
       const auth = useAuthStore();
       const currentUserId = String(auth.user?.id);
 
@@ -184,7 +224,10 @@ export const useChatStore = defineStore("chat", {
           lastMessage: msg.message || msg.body,
           createdAt: msg.created_at || msg.createdAt,
           unread:
-            this.activeChat?.id === chat.id ? 0 : Number(chat.unread || 0) + 1,
+            this.activeChat &&
+            String(this.activeChat.otherId) === String(chat.otherId)
+              ? 0
+              : Number(chat.unread || 0) + 1,
         };
       });
 
@@ -196,10 +239,50 @@ export const useChatStore = defineStore("chat", {
 
       this.unreadMessages = this.unreadTotal;
     },
-    setTyping(chatId, typing = true) {
-      this.chats = this.chats.map((chat) =>
-        String(chat.id) === String(chatId) ? { ...chat, typing } : chat,
-      );
+    setTyping(senderId, typing = true) {
+      this.chats = this.chats.map((chat) => {
+        if (String(chat.otherId) === String(senderId)) {
+          return {
+            ...chat,
+            typing,
+          };
+        }
+
+        return chat;
+      });
+
+      // ⭐ Active Chat Header Update
+      if (
+        this.activeChat &&
+        String(this.activeChat.otherId) === String(senderId)
+      ) {
+        this.activeChat = {
+          ...this.activeChat,
+          typing,
+        };
+      }
+    },
+    setOnline(userId, online = true) {
+      this.chats = this.chats.map((chat) => {
+        if (String(chat.otherId) === String(userId)) {
+          return {
+            ...chat,
+            online,
+          };
+        }
+
+        return chat;
+      });
+
+      if (
+        this.activeChat &&
+        String(this.activeChat.otherId) === String(userId)
+      ) {
+        this.activeChat = {
+          ...this.activeChat,
+          online,
+        };
+      }
     },
   },
 });

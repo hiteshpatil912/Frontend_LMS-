@@ -57,23 +57,25 @@ export const useMessageStore = defineStore("messages", {
             body: m.message || m.body || "",
           }));
         // Mark messages as seen
-     // Mark messages as seen
-try {
+        try {
+          await api.patch(`/${role}/chat/${chatId}/seen`);
 
-  await api.patch(`/chat/${chatId}/seen`);
+          // Local state update (instant UI)
+          this.messages[chatId] = (this.messages[chatId] || []).map((m) => {
+            const senderId = String(m.sender_id || m.senderId || m.sender?.id);
 
-  this.messages[chatId] = this.messages[chatId].map((m) => ({
-    ...m,
-    seen_at:
-      String(m.sender_id || m.senderId || m.sender?.id) ===
-      selectedUserId
-        ? new Date().toISOString()
-        : m.seen_at,
-  }));
+            if (senderId === selectedUserId) {
+              return {
+                ...m,
+                seen_at: new Date().toISOString(),
+              };
+            }
 
-} catch (e) {
-  console.log("Seen API failed", e);
-}
+            return m;
+          });
+        } catch (e) {
+          console.log("Seen API failed", e);
+        }
       } catch (error) {
         this.errors = {
           general: "Unable to load messages.",
@@ -151,7 +153,32 @@ try {
           : message,
       );
     },
+addRealtimeMessage(chat) {
+  const auth = useAuthStore();
 
+  const currentUserId = String(auth.user?.id);
+
+  const otherId =
+    String(chat.sender_id) === currentUserId
+      ? String(chat.receiver_id)
+      : String(chat.sender_id);
+
+  if (!this.messages[otherId]) {
+    this.messages[otherId] = [];
+  }
+
+  const exists = this.messages[otherId].some(
+    (m) => String(m.id) === String(chat.id)
+  );
+
+  if (exists) return;
+
+  this.messages[otherId].push({
+    ...chat,
+    mine: String(chat.sender_id) === currentUserId,
+    body: chat.message || "",
+  });
+},
     clearMessages(chatId) {
       this.messages[chatId] = [];
     },
