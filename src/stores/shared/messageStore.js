@@ -96,6 +96,11 @@ export const useMessageStore = defineStore("messages", {
       const role = auth.user?.role || "student";
 
       try {
+        console.log("🚀 Sending Message", {
+  receiver_id: chatId,
+  message: payload.body,
+  role,
+});
         const response = await api.post(`/${role}/chat`, {
           receiver_id: chatId,
           message: payload.body,

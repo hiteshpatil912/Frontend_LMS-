@@ -40,12 +40,11 @@
           v-for="item in store.recentNotifications"
           v-else
           :key="item.id"
-          v-slot="{ active }"
         >
           <button
             class="w-full rounded-md px-3 py-2 text-left"
             :class="active ? 'bg-slate-100' : ''"
-            @click="store.markAsRead(item.id)"
+            @click="openNotification(item)"
           >
             <div class="flex items-start gap-2">
               <span
@@ -76,13 +75,7 @@
 import { onMounted } from "vue";
 import { nextTick } from "vue";
 import { useAuthStore } from "@/stores/auth/authStore";
-import {
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-  TransitionRoot as Transition,
-} from "@headlessui/vue";
+import { useRouter } from "vue-router";
 import { BellIcon } from "@heroicons/vue/24/outline";
 import NotificationBadge from "@/components/notification/NotificationBadge.vue";
 import { useNotificationStore } from "@/stores/shared/notificationStore";
@@ -90,6 +83,7 @@ import { useNotificationStore } from "@/stores/shared/notificationStore";
 
 const store = useNotificationStore();
 const auth = useAuthStore();
+const router = useRouter();
 
 defineProps({
   count: {
@@ -98,13 +92,45 @@ defineProps({
   },
 });
 
+const openNotification = async (item) => {
+
+  await store.markAsRead(item.id);
+
+  // dropdown मधून remove
+  store.notifications = store.notifications.filter(
+    (n) => String(n.id) !== String(item.id)
+  );
+
+  if (item.title === "New Message") {
+
+    if (auth.user?.role === "teacher") {
+      router.push("/teacher/chat");
+    } else {
+      router.push("/student/chat");
+    }
+
+    return;
+  }
+
+  if (item.title === "New Announcement") {
+
+    if (auth.user?.role === "teacher") {
+      router.push("/teacher/announcements");
+    } else {
+      router.push("/student/announcements");
+    }
+  }
+};
+
 onMounted(async () => {
   await auth.bootstrap();
 
   await nextTick();
 
   await store.fetchNotifications();
-  console.log("🔔 Store Notifications", store.notifications);
+
+  console.log("🔥 Notifications =", store.notifications);
+console.log("🔥 Count =", store.unreadCount);
   const userId = auth.user?.id;
 
   console.log("🔔 Notification User =", userId);

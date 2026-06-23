@@ -243,6 +243,16 @@ onMounted(async () => {
 
   const channel = window.Echo.private(`chat.${userId}`);
 
+  // console.log("🔥 Joining Chat Channel =", `chat.${userId}`);
+
+  channel.subscribed(() => {
+    console.log("✅ CHAT SUBSCRIBED", userId);
+  });
+
+  channel.error((err) => {
+    console.log("❌ CHAT ERROR", err);
+  });
+
   channel.listen(".message.sent", async (e) => {
     console.log("🔥 MESSAGE RECEIVED", e);
 
@@ -255,7 +265,7 @@ onMounted(async () => {
     //   notificationSound.play().catch((err) => {
     //     console.log("🔇 Sound Error", err);
     //   });
-      
+
     //   if (
     //     Notification.permission === "granted" &&
     //     document.hidden &&
