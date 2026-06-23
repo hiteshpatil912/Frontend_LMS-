@@ -80,6 +80,8 @@ import MessageBubble from "@/components/chat/MessageBubble.vue";
 import OnlineStatusBadge from "@/components/chat/OnlineStatusBadge.vue";
 import TypingIndicator from "@/components/chat/TypingIndicator.vue";
 
+
+
 const props = defineProps({
   chat: {
     type: Object,
@@ -106,6 +108,7 @@ const props = defineProps({
     required: true,
   },
 });
+
 
 const emit = defineEmits(["send", "refresh"]);
 

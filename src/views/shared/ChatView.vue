@@ -1,5 +1,5 @@
 <template>
-    <!-- Announcement Toast -->
+  <!-- Announcement Toast -->
   <transition
     enter-active-class="transition duration-300"
     enter-from-class="opacity-0 translate-y-2"
@@ -13,12 +13,8 @@
       class="fixed top-5 right-5 z-[9999] w-96 rounded-xl border border-blue-200 bg-white shadow-2xl"
     >
       <div class="p-4">
-
         <div class="flex items-center justify-between">
-
-          <h3 class="font-semibold text-blue-700">
-            📢 New Announcement
-          </h3>
+          <h3 class="font-semibold text-blue-700">📢 New Announcement</h3>
 
           <button
             @click="showAnnouncement = false"
@@ -26,7 +22,6 @@
           >
             ✕
           </button>
-
         </div>
 
         <h4 class="mt-3 text-lg font-bold">
@@ -36,7 +31,6 @@
         <p class="mt-2 text-sm text-slate-600">
           {{ announcement.body }}
         </p>
-
       </div>
     </div>
   </transition>
@@ -83,7 +77,7 @@
 </template>
 
 <script setup>
-import { computed,ref , onMounted, onUnmounted } from "vue";
+import { computed, ref, onMounted, onUnmounted } from "vue";
 import ChatSidebar from "@/components/chat/ChatSidebar.vue";
 import ChatWindow from "@/components/chat/ChatWindow.vue";
 import { useChatStore } from "@/stores/shared/chatStore";
@@ -156,6 +150,9 @@ const refreshChats = async () => {
 };
 
 onMounted(async () => {
+  if ("Notification" in window) {
+    Notification.requestPermission();
+  }
   // 🔓 Unlock Audio on first click
   const unlockAudio = () => {
     notificationSound
@@ -188,31 +185,31 @@ onMounted(async () => {
   console.log("Echo User =", userId);
 
   if (!userId) return;
- // ===============================
-// Global Announcement Channel
-// ===============================
+  // ===============================
+  // Global Announcement Channel
+  // ===============================
 
-const announcementChannel = window.Echo.private("announcement");
+  const announcementChannel = window.Echo.private("announcement");
 
-announcementChannel.listen(".announcement.created", (e) => {
-  console.log("📢 Announcement Received", e);
+  announcementChannel.listen(".announcement.created", (e) => {
+    console.log("📢 Announcement Received", e);
 
-  announcement.value = {
-    title: e.announcement.title,
-    body: e.announcement.body,
-  };
+    announcement.value = {
+      title: e.announcement.title,
+      body: e.announcement.body,
+    };
 
-  showAnnouncement.value = true;
+    showAnnouncement.value = true;
 
-  // 🔔 Sound
-  notificationSound.currentTime = 0;
+    // 🔔 Sound
+    notificationSound.currentTime = 0;
 
-  notificationSound.play().catch(() => {});
+    notificationSound.play().catch(() => {});
 
-  setTimeout(() => {
-    showAnnouncement.value = false;
-  }, 5000);
-});
+    setTimeout(() => {
+      showAnnouncement.value = false;
+    }, 5000);
+  });
 
   // ===============================
   // Presence Channel
@@ -252,13 +249,23 @@ announcementChannel.listen(".announcement.created", (e) => {
     const chat = e.chat;
 
     // 🔔 Play sound only for incoming messages
-    if (String(chat.sender_id) !== String(auth.user?.id)) {
-      notificationSound.currentTime = 0;
+    // if (String(chat.sender_id) !== String(auth.user?.id)) {
+    //   notificationSound.currentTime = 0;
 
-      notificationSound.play().catch((err) => {
-        console.log("🔇 Sound Error", err);
-      });
-    }
+    //   notificationSound.play().catch((err) => {
+    //     console.log("🔇 Sound Error", err);
+    //   });
+      
+    //   if (
+    //     Notification.permission === "granted" &&
+    //     document.hidden &&
+    //     String(chat.sender_id) !== String(auth.user?.id)
+    //   ) {
+    //     new Notification("New Message", {
+    //       body: chat.message,
+    //     });
+    //   }
+    // }
 
     // ⭐ Update sidebar
     chatStore.receiveRealtimeMessage(chat.sender_id, chat);

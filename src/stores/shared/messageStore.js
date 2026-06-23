@@ -115,6 +115,11 @@ export const useMessageStore = defineStore("messages", {
 
         return message;
       } catch (error) {
+           console.log("❌ FULL ERROR =", error);
+
+  console.log("❌ RESPONSE =", error.response);
+
+  console.log("❌ DATA =", error.response?.data);
         if (!shouldUseLocalFallback(error)) {
           this.errors = {
             general: error.response?.data?.message || "Unable to send message.",
