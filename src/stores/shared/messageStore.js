@@ -95,16 +95,15 @@ export const useMessageStore = defineStore("messages", {
       const auth = useAuthStore();
       const role = auth.user?.role || "student";
 
+      console.log("user role", role);
+      console.log("sendMessage", chatId, payload);
       try {
-        console.log("🚀 Sending Message", {
-  receiver_id: chatId,
-  message: payload.body,
-  role,
-});
+        
         const response = await api.post(`/${role}/chat`, {
           receiver_id: chatId,
           message: payload.body,
         });
+        console.log("✅ MESSAGE SENT =", response);
 
         const result = unwrap(response);
         const rawMessage =

@@ -38,8 +38,8 @@
         </div>
         <MenuItem
           v-for="item in store.recentNotifications"
-          v-else
           :key="item.id"
+          v-slot="{ active }"
         >
           <button
             class="w-full rounded-md px-3 py-2 text-left"
@@ -76,10 +76,10 @@ import { onMounted } from "vue";
 import { nextTick } from "vue";
 import { useAuthStore } from "@/stores/auth/authStore";
 import { useRouter } from "vue-router";
+import { Menu, MenuButton, MenuItem, MenuItems, TransitionRoot as Transition } from '@headlessui/vue'
 import { BellIcon } from "@heroicons/vue/24/outline";
 import NotificationBadge from "@/components/notification/NotificationBadge.vue";
 import { useNotificationStore } from "@/stores/shared/notificationStore";
-
 
 const store = useNotificationStore();
 const auth = useAuthStore();
@@ -93,27 +93,29 @@ defineProps({
 });
 
 const openNotification = async (item) => {
+  console.log("CLICKED =", item);
 
-  await store.markAsRead(item.id);
+  try {
+    await store.markAsRead(item.id);
+  } catch (error) {
+    console.log(error);
+  }
 
-  // dropdown मधून remove
+  // UI मधून लगेच remove
   store.notifications = store.notifications.filter(
     (n) => String(n.id) !== String(item.id)
   );
 
   if (item.title === "New Message") {
-
     if (auth.user?.role === "teacher") {
       router.push("/teacher/chat");
     } else {
       router.push("/student/chat");
     }
-
     return;
   }
 
   if (item.title === "New Announcement") {
-
     if (auth.user?.role === "teacher") {
       router.push("/teacher/announcements");
     } else {
@@ -130,7 +132,7 @@ onMounted(async () => {
   await store.fetchNotifications();
 
   console.log("🔥 Notifications =", store.notifications);
-console.log("🔥 Count =", store.unreadCount);
+  console.log("🔥 Count =", store.unreadCount);
   const userId = auth.user?.id;
 
   console.log("🔔 Notification User =", userId);

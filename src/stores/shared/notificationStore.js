@@ -27,16 +27,17 @@ export const useNotificationStore = defineStore("notifications", {
         ? state.notifications.filter((item) => !item.is_read).length
         : 0,
 
-    recentNotifications: (state) =>
-      Array.isArray(state.notifications)
-        ? [...state.notifications]
-            .sort(
-              (a, b) =>
-                new Date(b.created_at || b.timestamp) -
-                new Date(a.created_at || a.timestamp)
-            )
-            .slice(0, 6)
-        : [],
+   recentNotifications: (state) =>
+  Array.isArray(state.notifications)
+    ? state.notifications
+        .filter((item) => !item.is_read)
+        .sort(
+          (a, b) =>
+            new Date(b.created_at || b.timestamp) -
+            new Date(a.created_at || a.timestamp)
+        )
+        .slice(0, 6)
+    : [],
 
     notificationsByType: (state) => (type) =>
       Array.isArray(state.notifications)
@@ -53,6 +54,7 @@ export const useNotificationStore = defineStore("notifications", {
         const { data } = await api.get("/my-notifications");
 
         console.log("🔥 API Response =", data);
+        console.log("🔥 Notifications Array =", data.notifications || data.data);
 
         this.notifications =
           data.notifications ||
